@@ -42,6 +42,14 @@ class MemberController extends Controller
     public function store(Request $request)
     {
         $data = $request->all();
+        $check_user = User::where('line_id', $data['line_id'])
+                          ->orWhere('phone', $data['phone'])
+                          ->get();
+        if ($check_user != null) {
+            $introducer = $data['introducer'];
+            return view('members.create', compact('introducer'));
+        }
+
         $q4 = $request->q4;
         $introducer = User::where('line_id', $data['introducer'])->get()->first();
         $user = [
