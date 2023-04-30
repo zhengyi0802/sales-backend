@@ -45,10 +45,6 @@ class DistrobuterController extends Controller
         $check_user = User::where('line_id', $data['line_id'])
                           ->orWhere('phone', $data['phone'])
                           ->get();
-        if ($check_user != null) {
-            $introducer = $data['introducer'];
-            return view('distrobuters.create', compact('introducer'));
-        }
 
         $introducer = User::where('line_id', $data['introducer'])->get()->first();
         $user = [
@@ -60,7 +56,13 @@ class DistrobuterController extends Controller
             'created_by' => 9999,
             'status'     => true,
         ];
-        $user = User::create($user);
+
+        if (count($check_user) == 0) {
+            $user = User::create($user);
+        } else {
+            $check = $check_user->first();
+            $check->update($user);
+        }
 
         $member = [
             'user_id'        => $user->id,
@@ -69,7 +71,12 @@ class DistrobuterController extends Controller
             'pid'            => $data['pid'],
             'created_by'     => 9999,
         ];
-        $distrobuter = Member::create($member);
+        if (count($check_user) == 0) {
+            $distrobuter = Member::create($member);
+        } else {
+            $distrobuter = Member::where('user_id', $check_id)->get()->first;
+            $distrobuter->update($member);
+        }
 
         return redirect()->route('distrobuters.show', compact('distrobuter'));
     }

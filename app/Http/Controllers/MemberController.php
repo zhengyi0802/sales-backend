@@ -45,31 +45,28 @@ class MemberController extends Controller
         $check_user = User::where('line_id', $data['line_id'])
                           ->orWhere('phone', $data['phone'])
                           ->get();
-        if ($check_user != null) {
-            $introducer = $data['introducer'];
-            return view('members.create', compact('introducer'));
-        }
-
         $q4 = $request->q4;
-        $introducer = User::where('line_id', $data['introducer'])->get()->first();
-        $user = [
-            'name'       => $data['name'],
-            'phone'      => $data['phone'],
-            'line_id'    => $data['line_id'],
-            'password'   => bcrypt('12345678'),
-            'role'       => UserRole::Member,
-            'created_by' => 9999,
-            'status'     => true,
-        ];
-        $user = User::create($user);
+        if (count($check_user) > 0) {
+            $introducer = User::where('line_id', $data['introducer'])->get()->first();
+            $user = [
+                'name'       => $data['name'],
+                'phone'      => $data['phone'],
+                'line_id'    => $data['line_id'],
+                'password'   => bcrypt('12345678'),
+                'role'       => UserRole::Member,
+                'created_by' => 9999,
+                'status'     => true,
+            ];
+            $user = User::create($user);
 
-        $member = [
-            'user_id'        => $user->id,
-            'introducer_id'  => $introducer->id,
-            'address'        => $data['address'],
-            'created_by'     => 9999,
-        ];
-        $member = Member::create($member);
+            $member = [
+                'user_id'        => $user->id,
+                'introducer_id'  => $introducer->id,
+                'address'        => $data['address'],
+                'created_by'     => 9999,
+            ];
+            $member = Member::create($member);
+        }
 
         $order_latest = Order::orderBy('id', 'desc')->get()->first();
         if ($order_latest == null) {

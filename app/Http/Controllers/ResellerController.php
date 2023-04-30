@@ -45,22 +45,24 @@ class ResellerController extends Controller
         $check_user = User::where('line_id', $data['line_id'])
                           ->orWhere('phone', $data['phone'])
                           ->get();
-        if ($check_user != null) {
-            $introducer = $data['introducer'];
-            return view('resellers.create', compact('introducer'));
-        }
 
         $introducer = User::where('line_id', $data['introducer'])->get()->first();
         $user = [
-            'name'       => $data['name'],
-            'phone'      => $data['phone'],
-            'line_id'    => $data['line_id'],
-            'password'   => bcrypt($data['password']),
-            'role'       => UserRole::Reseller,
-            'created_by' => 9999,
-            'status'     => true,
+                'name'       => $data['name'],
+                'phone'      => $data['phone'],
+                'line_id'    => $data['line_id'],
+                'password'   => bcrypt($data['password']),
+                'role'       => UserRole::Reseller,
+                'created_by' => 9999,
+                'status'     => true,
         ];
-        $user = User::create($user);
+
+        if (count($check_user) == 0) {
+            $user = User::create($user);
+        } else {
+            $check = $check_user->first();
+            $check->update($user);
+        }
 
         $member = [
             'user_id'        => $user->id,
@@ -69,8 +71,12 @@ class ResellerController extends Controller
             'pid'            => $data['pid'],
             'created_by'     => 9999,
         ];
-        $reseller = Member::create($member);
-
+        if (count($check_user) == 0) {
+            $reseller = Member::create($member);
+        } else {
+            $reseller = Member::where('user_id', $check->id)->get()->first();
+            $reseller->update($member);
+        }
         return redirect()->route('resellers.show', compact('reseller'));
     }
 
