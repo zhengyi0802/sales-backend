@@ -2,6 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MemberController;
+use App\Http\Controllers\ResellerController;
+use App\Http\Controllers\DistrobuterController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -22,3 +25,7 @@ Route::get('/distrobuter', function () {
 });
 
 Route::resource('/members', MemberController::class);
+
+Route::resource('/resellers', ResellerController::class);
+
+Route::resource('/distrobuters', DistrobuterController::class);

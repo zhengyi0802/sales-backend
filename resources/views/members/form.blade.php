@@ -1,3 +1,4 @@
+
 <style>
   p.input {
       margin-left : 20px;
@@ -47,11 +48,16 @@
             </div>
             <div class="block">
                 <p class="title"><strong>{{ __('members.question_4') }} : </strong></p>
-                <p class="input"><input type="checkbox" name="q4[]" value="{{ trans_choice('members.answer_4', '1') }}">{{ trans_choice('members.answer_4', '1') }}</p>
-                <p class="input"><input type="checkbox" name="q4[]" value="{{ trans_choice('members.answer_4', '2') }}">{{ trans_choice('members.answer_4', '2') }}</p>
-                <p class="input"><input type="checkbox" name="q4[]" value="{{ trans_choice('members.answer_4', '3') }}">{{ trans_choice('members.answer_4', '3') }}</p>
-                <p class="input"><input type="checkbox" name="q4[]" value="{{ trans_choice('members.answer_4', '4') }}">{{ trans_choice('members.answer_4', '4') }}</p>
-                <p class="input"><input type="checkbox" name="q4[]" value="{{ trans_choice('members.answer_4', '5') }}">{{ trans_choice('members.answer_4', '5') }}</p>
+                <p class="input"><input type="checkbox" name="q4[]" value="{{ trans_choice('members.answer_4', '1') }}">
+                   <label for="{{ trans_choice('members.answer_4', '1') }}">{{ trans_choice('members.answer_4', '1') }}</label></p>
+                <p class="input"><input type="checkbox" name="q4[]" value="{{ trans_choice('members.answer_4', '2') }}">
+                   <label for="{{ trans_choice('members.answer_4', '2') }}">{{ trans_choice('members.answer_4', '2') }}</label></p>
+                <p class="input"><input type="checkbox" name="q4[]" value="{{ trans_choice('members.answer_4', '3') }}">
+                   <label for="{{ trans_choice('members.answer_4', '3') }}">{{ trans_choice('members.answer_4', '3') }}</label></p>
+                <p class="input"><input type="checkbox" name="q4[]" value="{{ trans_choice('members.answer_4', '4') }}">
+                   <label for="{{ trans_choice('members.answer_4', '4') }}">{{ trans_choice('members.answer_4', '4') }}</label></p>
+                <p class="input"><input type="checkbox" name="q4[]" value="{{ trans_choice('members.answer_4', '5') }}">
+                   <label for="{{ trans_choice('members.answer_4', '5') }}">{{ trans_choice('members.answer_4', '5') }}</label></p>
             </div>
             <div class="block">
                 <p class="title"><strong>{{ __('members.question_5') }} : <span class="must">{{ __('tables.must') }}</span></strong></p>

@@ -10,7 +10,7 @@ use App\Models\Order;
 use App\Enums\UserRole;
 use Illuminate\Http\Request;
 
-class MemberController extends Controller
+class ResellerController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -30,7 +30,7 @@ class MemberController extends Controller
     {
         $data = $request->all();
         $introducer = $data['introducer'];
-        return view('members.create', compact('introducer'));
+        return view('resellers.create', compact('introducer'));
     }
 
     /**
@@ -42,14 +42,13 @@ class MemberController extends Controller
     public function store(Request $request)
     {
         $data = $request->all();
-        $q4 = $request->q4;
         $introducer = User::where('line_id', $data['introducer'])->get()->first();
         $user = [
             'name'       => $data['name'],
             'phone'      => $data['phone'],
             'line_id'    => $data['line_id'],
-            'password'   => bcrypt('12345678'),
-            'role'       => UserRole::Member,
+            'password'   => bcrypt($data['password']),
+            'role'       => UserRole::Reseller,
             'created_by' => 9999,
             'status'     => true,
         ];
@@ -59,42 +58,12 @@ class MemberController extends Controller
             'user_id'        => $user->id,
             'introducer_id'  => $introducer->id,
             'address'        => $data['address'],
+            'pid'            => $data['pid'],
             'created_by'     => 9999,
         ];
-        $member = Member::create($member);
+        $reseller = Member::create($member);
 
-        $order_latest = Order::orderBy('id', 'desc')->get()->first();
-        if ($order_latest == null) {
-            $orderlatest = 0;
-        } else {
-            $orderlatest = $order_latest->id;
-        }
-
-        $idinit = ((now()->year-2000)*100+(now()->month))*10000+1;
-
-        if ($idinit <= $orderlatest) {
-            $id = $orderlatest+1;
-        } else {
-            $id = $idinit;
-        }
-        $order = [
-            'id'             => $id,
-            'member_id'      => $member->id,
-        ];
-        Order::create($order);
-
-        $q4json = json_encode($q4);
-        $qdata = [
-            'member_id'      => $member->id,
-            'q1'             => $data['q1'],
-            'q2'             => $data['q2'],
-            'q3'             => $data['q3'],
-            'q4'             => $q4json,
-            'q5'             => $data['q5'],
-        ];
-        Questionnaire::create($qdata);
-
-        return redirect()->route('members.show', compact('member'));
+        return redirect()->route('resellers.show', compact('reseller'));
     }
 
     /**
@@ -103,9 +72,9 @@ class MemberController extends Controller
      * @param  \App\Models\Member  $member
      * @return \Illuminate\Http\Response
      */
-    public function show(Member $member)
+    public function show(Member $reseller)
     {
-        return view('members.show', compact('member'));
+        return view('resellers.show', compact('reseller'));
     }
 
     /**
@@ -114,7 +83,7 @@ class MemberController extends Controller
      * @param  \App\Models\Member  $member
      * @return \Illuminate\Http\Response
      */
-    public function edit(Member $member)
+    public function edit(Member $reseller)
     {
     }
 
@@ -125,7 +94,7 @@ class MemberController extends Controller
      * @param  \App\Models\Member  $member
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Member $member)
+    public function update(Request $request, Member $reseller)
     {
     }
 
@@ -135,7 +104,7 @@ class MemberController extends Controller
      * @param  \App\Models\Member  $member
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Member $member)
+    public function destroy(Member $reseller)
     {
     }
 

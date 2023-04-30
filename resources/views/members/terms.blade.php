@@ -1,3 +1,4 @@
+
 <style>
   div.terms {
       border           : 1px solid blue;
