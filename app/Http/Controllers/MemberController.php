@@ -45,8 +45,9 @@ class MemberController extends Controller
         $check_user = User::where('line_id', $data['line_id'])
                           ->orWhere('phone', $data['phone'])
                           ->get();
+
         $q4 = $request->q4;
-        if (count($check_user) > 0) {
+        if (count($check_user) == 0) {
             $introducer = User::where('line_id', $data['introducer'])->get()->first();
             $user = [
                 'name'       => $data['name'],
@@ -66,6 +67,9 @@ class MemberController extends Controller
                 'created_by'     => 9999,
             ];
             $member = Member::create($member);
+        } else {
+            $check = $check_user->first();
+            $member = Member::where('user_id', $check->id)->get()->first();
         }
 
         $order_latest = Order::orderBy('id', 'desc')->get()->first();
