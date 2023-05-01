@@ -55,7 +55,7 @@ class MemberController extends Controller
                 'line_id'    => $data['line_id'],
                 'password'   => bcrypt('12345678'),
                 'role'       => UserRole::Member,
-                'created_by' => 9999,
+                'created_by' => 1,
                 'status'     => true,
             ];
             $user = User::create($user);
@@ -64,7 +64,7 @@ class MemberController extends Controller
                 'user_id'        => $user->id,
                 'introducer_id'  => $introducer->id,
                 'address'        => $data['address'],
-                'created_by'     => 9999,
+                'created_by'     => 1,
             ];
             $member = Member::create($member);
         } else {

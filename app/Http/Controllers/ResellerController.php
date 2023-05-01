@@ -53,7 +53,7 @@ class ResellerController extends Controller
                 'line_id'    => $data['line_id'],
                 'password'   => bcrypt($data['password']),
                 'role'       => UserRole::Reseller,
-                'created_by' => 9999,
+                'created_by' => 1,
                 'status'     => true,
         ];
 
@@ -69,7 +69,7 @@ class ResellerController extends Controller
             'introducer_id'  => $introducer->id,
             'address'        => $data['address'],
             'pid'            => $data['pid'],
-            'created_by'     => 9999,
+            'created_by'     => 1,
         ];
         if (count($check_user) == 0) {
             $reseller = Member::create($member);
