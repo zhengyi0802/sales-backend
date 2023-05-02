@@ -69,6 +69,8 @@ class ResellerController extends Controller
             'introducer_id'  => $introducer->id,
             'address'        => $data['address'],
             'pid'            => $data['pid'],
+            'bonus'          => 2500,
+            'share'          => 1000,
             'created_by'     => 1,
         ];
         if (count($check_user) == 0) {
