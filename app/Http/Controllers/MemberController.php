@@ -89,6 +89,8 @@ class MemberController extends Controller
         $order = [
             'id'             => $id,
             'member_id'      => $member->id,
+            'phone'          => $data['phone'],
+            'address'        => $data['address'],
         ];
         Order::create($order);
 

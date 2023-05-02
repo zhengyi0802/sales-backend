@@ -17,7 +17,7 @@ use App\Http\Controllers\DistrobuterController;
 */
 
 Route::get('/', function () {
-    return view('order');
+    return view('home');
 });
 
 Route::get('/distrobuter', function () {
