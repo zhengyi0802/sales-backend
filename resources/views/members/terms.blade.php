@@ -8,6 +8,10 @@
       background-color : yellowgreen;
   }
 </style>
+<div>
+  <img src="../picture-2.jpg" width="100%">
+  <img src="../picture-3.jpg" width="100%">
+</div>
 <div class="terms">
   <h2 role="heading" aria-level="2">
   <strong>75吋0元大電視申領補充說明:</strong></h2>
