@@ -91,6 +91,7 @@ class MemberController extends Controller
             'member_id'      => $member->id,
             'phone'          => $data['phone'],
             'address'        => $data['address'],
+            'model'          => $daya['model'],
         ];
         Order::create($order);
 

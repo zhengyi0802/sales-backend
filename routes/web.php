@@ -20,6 +20,10 @@ Route::get('/', function () {
     return view('home');
 });
 
+Route::get('/advertising', function() {
+    return view('advertising');
+});
+
 Route::get('/distrobuter', function () {
     return view('distrobuter');
 });

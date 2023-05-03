@@ -23,6 +23,8 @@
         'memo'           => '備註',
         'status'         => '狀態',
         'memo'           => '備註',
+        'model_65'       => '65吋(月繳799元)',
+        'model_75'       => '75吋(月繳999元)',
         'be_reseller'    => '成為經銷商',
         'be_distrobuter' => '成為分銷商',
         'created_by'     => '建檔人',
