@@ -18,20 +18,12 @@
 </style>
 
 <body>
-<style>
-   td.ta {
-       text-align : center;
-   }
-</style>
 <table style="border-collapse: collapse; width: 100%;">
   <tbody>
-    <tr width="100%">
-      <td>
-        <video width="100%" poster="picture-4.png" controls><source src="1683073750552.mp4" type="video/mp4"></video>
-      </td>
-    <tr width="100%">
-      <td>
-        <video width="100%" poster="picture-5.png" controls><source src="1683073769823.mp4" type="video/mp4"></video>
+    <tr>
+      <td class="content">
+        @include('orders.search')
+        @include('orders.table')
       </td>
     </tr>
   </tbody>

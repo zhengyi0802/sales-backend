@@ -14,9 +14,10 @@ class Order extends Model
         'phone',
         'address',
         'model',
-        'prepaid_paid',
-        'paid_date',
-        'prepaid_unpaid',
+        'paid_1',
+        'paid_2',
+        'paid_date_1',
+        'paid_date_2',
         'flow_status',
         'memo',
         'completed',
@@ -24,6 +25,10 @@ class Order extends Model
 
     public function member() {
         return $this->belongsTo(Member::class, 'member_id');
+    }
+
+   public function manager() {
+        return $this->belongsTo(Manager::class, 'member_id');
     }
 
     public function creator() {

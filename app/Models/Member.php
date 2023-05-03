@@ -39,7 +39,11 @@ class Member extends Model
         return $this->belongsTo(User::class, 'created_by');
     }
 
-    public function questionnaire () {
-        return $this->hasOne(Questionnaire::class, 'member_id');
+    public function customers() {
+        return $this->hasMany(Member::class, 'introducer_id');
+    }
+
+    public function orders() {
+        return $this->hasMany(Order::class, 'member_id');
     }
 }

@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MemberController;
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ResellerController;
 use App\Http\Controllers\DistrobuterController;
 
@@ -35,3 +36,9 @@ Route::resource('/members', MemberController::class);
 Route::resource('/resellers', ResellerController::class);
 
 Route::resource('/distrobuters', DistrobuterController::class);
+
+Route::get('/orders', [App\Http\Controllers\OrderController::class, 'index'])
+     ->name('orders.index');
+
+Route::get('/orders/{order}', [App\Http\Controllers\OrderController::class, 'show'])
+     ->name('orders.show');

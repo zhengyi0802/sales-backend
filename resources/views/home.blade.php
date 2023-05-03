@@ -32,7 +32,7 @@
     </tr>
     <tr width="100%">
       <td class="ta">
-          <a href="advertising">了解商機</a>
+          <a href="advertising">看大電視</a>
       </td>
       <td class="ta">
           <a href="members/create?introducer={{ $introducer ?? 'manager' }}">申領大電視</a>
