@@ -44,6 +44,7 @@ class MemberController extends Controller
         $data = $request->all();
         $check_user = User::where('line_id', $data['line_id'])
                           ->orWhere('phone', $data['phone'])
+                          ->orWhere('email', $data['email'])
                           ->get();
 
         $q4 = $request->q4;
@@ -53,6 +54,7 @@ class MemberController extends Controller
                 'name'       => $data['name'],
                 'phone'      => $data['phone'],
                 'line_id'    => $data['line_id'],
+                'email'      => $data['email'],
                 'password'   => bcrypt('12345678'),
                 'role'       => UserRole::Member,
                 'created_by' => 1,

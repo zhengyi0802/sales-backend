@@ -45,6 +45,10 @@
                 <p class="input"><input type="text" name="line_id" class="form-control"></p>
             </div>
             <div class="block">
+                <p class="title"><strong>{{ __('resellers.email') }} : <span class="must">{{ __('tables.must') }}</span></strong></p>
+                <p class="input"><input type="text" name="email" class="form-control"></p>
+            </div>
+            <div class="block">
                 <p class="title"><strong>{{ __('resellers.password') }} : <span class="must">{{ __('tables.must') }}</span></strong></p>
                 <p class="input"><input type="password" name="password" class="form-control"></p>
             </div>

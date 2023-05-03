@@ -50,6 +50,10 @@
        <p class="result">{{ $distrobuter->user->line_id }}</p>
      </div>
      <div class="block">
+       <p class="title"><strong>{{ __('distrobuters.email') }} :</strong></p>
+       <p class="result">{{ $distrobuter->user->email }}</p>
+     </div>
+     <div class="block">
        <p class="title"><strong>{{ __('distrobuters.pidnumbers') }} :</strong></p>
        <p class="result">{{ $distrobuter->pid }}</p>
      </div>

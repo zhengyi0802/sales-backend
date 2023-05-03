@@ -51,6 +51,7 @@ class DistrobuterController extends Controller
             'name'       => $data['name'],
             'phone'      => $data['phone'],
             'line_id'    => $data['line_id'],
+            'email'      => $data['email'],
             'password'   => bcrypt($data['password']),
             'role'       => UserRole::Distrobuter,
             'created_by' => 1,

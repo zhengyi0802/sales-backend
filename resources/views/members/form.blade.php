@@ -80,6 +80,10 @@
                 <p class="input"><input type="text" name="phone" class="form-control"></p>
             </div>
             <div class="block">
+                <p class="title"><strong>{{ __('members.email') }} : <span class="must">{{ __('tables.must') }}</span></strong></p>
+                <p class="input"><input type="text" name="email" class="form-control" style="width: 95%;"></p>
+            </div>
+            <div class="block">
                 <p class="title"><strong>{{ __('members.address') }} : <span class="must">{{ __('tables.must') }}</span></strong></p>
                 <p class="input"><input type="text" name="address" class="form-control" style="width: 95%;"></p>
             </div>

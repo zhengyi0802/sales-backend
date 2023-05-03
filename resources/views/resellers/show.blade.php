@@ -50,6 +50,10 @@
        <p class="result">{{ $reseller->user->line_id }}</p>
      </div>
      <div class="block">
+       <p class="title"><strong>{{ __('resellers.email') }} :</strong></p>
+       <p class="result">{{ $reseller->user->email }}</p>
+     </div>
+     <div class="block">
        <p class="title"><strong>{{ __('resellers.pidnumbers') }} :</strong></p>
        <p class="result">{{ $reseller->pid }}</p>
      </div>
