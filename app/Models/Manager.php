@@ -5,24 +5,23 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Member extends Model
+class Manager extends Model
 {
     use HasFactory;
     protected $fillable = [
         'user_id',
-        'introducer_id',
-        'address',
+        'company',
+        'share',
+        'bonus',
+        'cid',
         'pid',
+        'pid_image_1',
+        'pid_image_2',
         'bank',
         'bank_name',
         'account',
-        'bonus',
-        'share',
+        'address',
         'share_status',
-        'creadit_card',
-        'creadit_expire',
-        'pid_image_1',
-        'pid_image_2',
         'memo',
         'created_by',
         'status',
@@ -32,19 +31,8 @@ class Member extends Model
         return $this->belongsTo(User::class, 'user_id');
     }
 
-    public function introducer() {
-        return $this->belongsTo(User::class, 'introducer_id');
-    }
-
     public function creator() {
         return $this->belongsTo(User::class, 'created_by');
     }
 
-    public function customers() {
-        return $this->hasMany(Member::class, 'introducer_id');
-    }
-
-    public function orders() {
-        return $this->hasMany(Order::class, 'member_id');
-    }
 }

@@ -15,14 +15,20 @@
   a.btn-info {
       background-color : green;
   }
+  a.btn-paid1 {
+      background-color : gray;
+  }
+  a.btn-paid2 {
+      background-color : blue;
+  }
   a.btn {
       border           : none;
       color            : white;
-      padding          : 15px 32px;
+      padding          : 5px 5px;
       text-align       : center;
       text-decoration  : none;
       display          : inline-block;
-      font-size        : 16px;
+      font-size        : 14px;
   }
 </style>
 <table class="table table-bordered">
@@ -45,6 +51,8 @@
       <td class="grid">{{ trans_choice('orders.flow_statuses', $order->flow_status) }}</td>
       <td>
         <a class="btn btn-info" href="{{ route('orders.show',$order->id) }}">{{ __('tables.details') }}</a>
+        <a class="btn btn-paid1" href="{{ route('orders.show',$order->id) }}">{{ __('tables.btn_paid1') }}</a>
+        <a class="btn btn-paid2" href="{{ route('orders.show',$order->id) }}">{{ __('tables.btn_paid2') }}</a>
       </td>
     </td>
     @endforeach

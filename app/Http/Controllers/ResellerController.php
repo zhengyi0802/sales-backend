@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Uploads\FileUpload;
 use App\Models\User;
 use App\Models\Member;
+use App\Models\Manager;
 use App\Models\Questionnaire;
 use App\Models\Order;
 use App\Enums\UserRole;
@@ -47,6 +48,11 @@ class ResellerController extends Controller
                           ->get();
 
         $introducer = User::where('line_id', $data['introducer'])->get()->first();
+        if ($introducer->role == UserRole::Manager) {
+            $share_status = $introducer->manager->share_status;
+        } else {
+            $share_status = $introducer->member->share_status;
+        }
         $user = [
                 'name'       => $data['name'],
                 'phone'      => $data['phone'],
@@ -70,8 +76,9 @@ class ResellerController extends Controller
             'introducer_id'  => $introducer->id,
             'address'        => $data['address'],
             'pid'            => $data['pid'],
-            'bonus'          => 2500,
-            'share'          => 1000,
+            'bonus'          => ($share_status ? 2500 : 0),
+            'share'          => ($share_status ? 1000 : 0),
+            'share_status'   => $share_status,
             'created_by'     => 1,
         ];
         if (count($check_user) == 0) {
