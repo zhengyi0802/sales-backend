@@ -85,7 +85,7 @@
             </div>
             <div class="block">
                 <p class="title"><strong>{{ __('members.model') }} : <span class="must">{{ __('tables.must') }}</span></strong></p>
-                <p class="input"><input type="radio" name="model" value="1" class="form-control">{{ __('members.model_75') }}</p>
+                <p class="input"><input type="radio" name="model" value="1" class="form-control" checked>{{ __('members.model_75') }}</p>
                 <p class="input"><input type="radio" name="model" value="2" class="form-control">{{ __('members.model_65') }}</p>
             </div>
             <p align="center"><button class="submit" type="submit">{{ __('tables.submit') }}</button></p>

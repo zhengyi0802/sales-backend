@@ -35,7 +35,7 @@
           <a href="advertising">了解商機</a>
       </td>
       <td class="ta">
-          <a href="members/create?introducer={{ $introducer ?? '' }}">申領大電視</a>
+          <a href="members/create?introducer={{ $introducer ?? 'manager' }}">申領大電視</a>
       </td>
       <td class="ta">
           <div class="line-it-button" data-lang="zh_Hant" data-type="share-b" data-env="REAL" data-url="https://sales.mdo.tw/"

@@ -10,6 +10,7 @@
         'password'       => '密碼',
         'name'           => '姓名',
         'address'        => '地址',
+        'model'          => '機型',
         'introducer_id'  => '經辦人',
         'bank_name'      => '帳戶名稱',
         'bank'           => '銀行名稱',

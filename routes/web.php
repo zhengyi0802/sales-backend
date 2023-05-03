@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MemberController;
 use App\Http\Controllers\ResellerController;
@@ -16,8 +17,9 @@ use App\Http\Controllers\DistrobuterController;
 |
 */
 
-Route::get('/', function () {
-    return view('home');
+Route::get('/', function (Request $request) {
+    $introducer = $request->introducer;
+    return view('home', compact('introducer'));
 });
 
 Route::get('/advertising', function() {
