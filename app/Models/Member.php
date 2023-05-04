@@ -47,4 +47,8 @@ class Member extends Model
     public function orders() {
         return $this->hasMany(Order::class, 'member_id');
     }
+
+    public function questionnaire() {
+        return $this->hasOne(Questionnaire::class, 'member_id');
+    }
 }

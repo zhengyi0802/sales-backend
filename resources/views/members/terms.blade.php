@@ -9,8 +9,8 @@
   }
 </style>
 <div>
-  <img src="../picture-2.jpg" width="100%">
-  <img src="../picture-3.jpg" width="100%">
+  <img src="../picture-8.jpg" width="100%">
+  <img src="../picture-7.jpg" width="100%">
 </div>
 <div class="terms">
   <h2 role="heading" aria-level="2">
