@@ -45,9 +45,13 @@ class DistrobuterController extends Controller
         $data = $request->all();
         $check_user = User::where('line_id', $data['line_id'])
                           ->orWhere('phone', $data['phone'])
-                          ->get();
+                          ->first();
 
-        $introducer = User::where('line_id', $data['introducer'])->get()->first();
+        if ($data['introducer'] == null) {
+            $data['introducer'] = 'manager';
+        }
+
+        $introducer = User::where('line_id', $data['introducer'])->first();
         if ($introducer->role == UserRole::Manager) {
             $share_status = $introducer->manager->share_status;
         } else {
@@ -64,11 +68,11 @@ class DistrobuterController extends Controller
             'status'     => true,
         ];
 
-        if (count($check_user) == 0) {
+        if (is_null($check_user)) {
             $user = User::create($user);
         } else {
-            $check = $check_user->first();
-            $check->update($user);
+            $check_user->update($user);
+            $user = $check_user;
         }
 
         $member = [
@@ -81,11 +85,15 @@ class DistrobuterController extends Controller
             'share_status'   => $share_status,
             'created_by'     => 1,
         ];
-        if (count($check_user) == 0) {
+        if (is_null($check_user)) {
             $distrobuter = Member::create($member);
         } else {
-            $distrobuter = Member::where('user_id', $check_id)->get()->first;
-            $distrobuter->update($member);
+            $distrobuter = Member::where('user_id', $check_id)->first();
+            if (is_null($distrobuter)) {
+               $distrobuter = Member::create($member);
+            } else {
+               $distrobuter->update($member);
+            }
         }
 
         return redirect()->route('distrobuters.show', compact('distrobuter'));

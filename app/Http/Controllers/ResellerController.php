@@ -45,9 +45,12 @@ class ResellerController extends Controller
         $data = $request->all();
         $check_user = User::where('line_id', $data['line_id'])
                           ->orWhere('phone', $data['phone'])
-                          ->get();
+                          ->first();
+        if ($data['introducer'] == null) {
+            $data['introducer'] = 'manager';
+        }
+        $introducer = User::where('line_id', $data['introducer'])->first();
 
-        $introducer = User::where('line_id', $data['introducer'])->get()->first();
         if ($introducer->role == UserRole::Manager) {
             $share_status = $introducer->manager->share_status;
         } else {
@@ -64,11 +67,11 @@ class ResellerController extends Controller
                 'status'     => true,
         ];
 
-        if (count($check_user) == 0) {
+        if (is_null($check_user)) {
             $user = User::create($user);
         } else {
-            $check = $check_user->first();
-            $check->update($user);
+            $check_user->update($user);
+            $user = $check_user;
         }
 
         $member = [
@@ -81,12 +84,18 @@ class ResellerController extends Controller
             'share_status'   => $share_status,
             'created_by'     => 1,
         ];
-        if (count($check_user) == 0) {
+
+        if (is_null($check_user)) {
             $reseller = Member::create($member);
         } else {
-            $reseller = Member::where('user_id', $check->id)->get()->first();
-            $reseller->update($member);
+            $reseller = Member::where('user_id', $check->id)->first();
+            if (is_null($reseller)) {
+               $reseller = Member::create($member);
+            } else {
+               $reseller->update($member);
+            }
         }
+
         return redirect()->route('resellers.show', compact('reseller'));
     }
 

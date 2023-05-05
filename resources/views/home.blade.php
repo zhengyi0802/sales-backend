@@ -12,8 +12,17 @@
   body {
       background-color : burlywood;
   }
-  td.content {
+  div.row {
       width            : 100%;
+  }
+  span.advertising {
+      margin-left      : 40px;
+  }
+  span.order {
+      margin-left      : 40px;
+  }
+  span.share {
+      margin-left      : 40px;
   }
   div.title {
       margin-bottom    : 30px;
@@ -25,48 +34,21 @@
       text-align       : center;
       color            : red;
   }
-  img.svg {
-      width            : 20px;
-      height           : 20px;
-  }
-  span.arrow1{
-      margin-left      : 80px;
-  }
-  span.arrow2{
-      margin-left      : 80px;
-  }
-  span.arrow3{
-      margin-left      : 70px;
-  }
-
 </style>
 <!-- Scripts -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-<script src="{{ asset('js/rmdImageMaps/jquery.rwdImageMaps.js') }}" defer></script>
-<script src="{{ asset('js/rmdImageMaps/jquery.rwdImageMaps.min.js') }}" defer></script>
-<script>
-$(document).ready(function(e) {
-    $('img#map').rwdImageMaps();
-    $('area').on('mouseover', function(e) {
-       $(this).focus();
-    });
-});
-</script>
 <body>
   <div class="title"><b>領電視了</b></div>
   <div style="text-align: center;">
-     <img src="picture-6.jpg" style="width: 90%" usemap="#image-map" id="map">
+     <img src="picture-2.jpg" style="width: 90%" usemap="#image-map" id="map">
   </div>
-  <map name="image-map">
-     <area target="" alt="看大電視" title="看大電視" shape="rect" coords="108,2522,687,2680" href="advertising">
-     <area target="" alt="申領大電視" title="申領大電視" shape="rect" coords="785,2522,1363,2680" href="members/create?introducer={{ $introducer ?? 'manager' }}">
-     <area target="" alt="分享" title="分享" shape="rect" coords="1473,2522,1727,2680"
-           href="javascript:void(window.open('https://lineit.line.me/share/ui?url='.concat(encodeURIComponent(location.href)) ))">
-  </map>
-  <div width="100%">
-     <span class="arrow1"><img class="svg" src="up-arrow.svg"></span>
-     <span class="arrow2"><img class="svg" src="up-arrow.svg"></span>
-     <span class="arrow3"><img class="svg" src="up-arrow.svg"></span>
+  <div class="row">
+     <span class="advertising"><a href="advertising"><img src="advertising.gif" style="width: 20%;"></a>
+     <span class="order"><a href="members/create?introducer={{ $introducer ?? 'manager' }}"><img src="order.gif" style="width: 20%;"></a>
+     <span class="share">
+       <a href="javascript:void(window.open('https://lineit.line.me/share/ui?url='.concat(encodeURIComponent(location.href)) ))">
+         <img src="share.gif" style="width: 10%;">
+       </a>
   </div>
   <div class="bottom">
      續看網路有線電視+追劇<br>
