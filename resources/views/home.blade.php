@@ -40,7 +40,7 @@
 <body>
   <div class="title"><b>領電視了</b></div>
   <div style="text-align: center;">
-     <img src="picture-2.jpg" style="width: 90%" usemap="#image-map" id="map">
+     <img src="picture-8.jpg" style="width: 90%" usemap="#image-map" id="map">
   </div>
   <div class="row">
      <span class="advertising"><a href="advertising"><img src="advertising.gif" style="width: 20%;"></a>

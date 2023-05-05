@@ -85,6 +85,7 @@ class DistrobuterController extends Controller
             'share_status'   => $share_status,
             'created_by'     => 1,
         ];
+
         if (is_null($check_user)) {
             $distrobuter = Member::create($member);
         } else {
