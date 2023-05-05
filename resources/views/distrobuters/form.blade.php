@@ -46,7 +46,7 @@
             </div>
             <div class="block">
                 <p class="title"><strong>{{ __('distrobuters.email') }} : <span class="must">{{ __('tables.must') }}</span></strong></p>
-                <p class="input"><input type="text" name="email" class="form-control"></p>
+                <p class="input"><input type="text" name="email" class="form-control" placeholder="user@email.com"></p>
             </div>
             <div class="block">
                 <p class="title"><strong>{{ __('distrobuters.password') }} : <span class="must">{{ __('tables.password') }}</span></strong></p>
