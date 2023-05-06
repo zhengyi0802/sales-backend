@@ -27,8 +27,16 @@
       color      : red;
       font-size  : 12px;
   }
+  .error {
+     color       : red;
+     margin-left : 10px;
+     font-size   : 12px;
+  }
+  label.error {
+     display     : inline;
+  }
 </style>
-<form action="{{ route('distrobuters.store') }}" method="POST" enctype="multipart/form-data">
+<form id="distrobuter-form" action="{{ route('distrobuters.store') }}" method="POST" enctype="multipart/form-data">
      @csrf
      <input type="hidden" name="introducer" value="{{ $introducer }}">
      <div class="row">
@@ -64,3 +72,76 @@
     </div>
 </form>
 
+<script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
+<script src="https://sales.mdo.tw/js/jquery-validation/jquery.validate.min.js"></script>
+<script>
+    $(document).ready(function(){
+        $('#distrobuter-form').validate({
+           onkeyup: function(element, event) {
+               var value = this.elementValue(element).replace(/^\s+/g, "");
+               $(element).val(value);
+           },
+           rules: {
+               name: {
+                  required: true
+               },
+               phone: {
+                  required: true,
+                  minlength: 10,
+                  maxlength: 10
+               },
+               line_id: {
+                  required: true
+               },
+               password: {
+                  required: true,
+                  minlength: 8
+               },
+               email: {
+                  required: true,
+                  email: true
+               },
+               address: {
+                  required: true,
+                  minlength: 20
+               },
+               pid: {
+                  required: true,
+                  minlength: 10
+               },
+           },
+           messages: {
+               name: {
+                  required: '姓名必填'
+               },
+               phone: {
+                  required: '電話必填',
+                  minlength: '電話號碼長度錯誤(10位數字)',
+                  maxlength: '電話號碼長度錯誤(10位數字)'
+               },
+               line_id: {
+                  required: 'Line ID必填'
+               },
+               password: {
+                  required: '密碼必須填寫',
+                  minlength: '密碼設置至少8個字元'
+               },
+               email: {
+                  required: '電子信箱必須填寫',
+                  email: '電子信箱格式錯誤'
+               },
+               address: {
+                  required: '地址必須填寫',
+                  minlength: '地址填寫錯誤'
+               },
+               pid: {
+                  required: '身份證字號必填',
+                  minlength: '身份證字號長度錯誤'
+               },
+           },
+           submitHandler: function(form) {
+                form.submit();
+           }
+        });
+    });
+</script>
