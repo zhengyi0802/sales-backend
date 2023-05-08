@@ -34,7 +34,7 @@ class MemberController extends Controller
         }
         $introducerData = User::where('line_id', $data['introducer'])->first();
         if (is_null($introducerData)
-            || ($introducerData != UserRole::Manager
+            || ($introducerData->role != UserRole::Manager
             && $introducerData->role != UserRole::Reseller
             && $introducerData->role != UserRole::Distrobuter)) {
             return view('errorpage');
