@@ -7,6 +7,7 @@ use App\Models\Member;
 use App\Models\User;
 use App\Enums\UserRole;
 use App\Enums\OrderFlow;
+use App\Collections\SunTechPayment;
 use Illuminate\Http\Request;
 
 class OrderController extends Controller
@@ -57,7 +58,9 @@ class OrderController extends Controller
      */
     public function show(Order $order)
     {
-        return view('orders.show', compact('order'));
+        $pInfo = new SunTechPayment($order, 3500, 1);
+        return view('orders.show', compact('order'))
+               ->with(compact('pInfo'));
     }
 
     /**

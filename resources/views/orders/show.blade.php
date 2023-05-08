@@ -2,9 +2,8 @@
 <html>
 <head></head>
 <title></title>
-  <meta charset="UTF-8" ,="" name="viewport" content="width=device-width, initial-scale=1">
-  <!--====== Required meta tags ======-->
   <meta charset="utf-8" />
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <meta http-equiv="x-ua-compatible" content="ie=edge" />
   <meta name="description" content="" />
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
@@ -31,7 +30,7 @@
 </style>
 
 <body>
-  <h2>申領資料已送出</h2>
+  <h2>申領資料</h2>
   <div class="content">
      <div class="block">
        <p class="title"><strong>{{ __('orders.id') }} :</strong></p>
@@ -61,5 +60,5 @@
        <p class="title"><strong>{{ __('orders.flow_status') }} :</strong></p>
        <p class="result">{{ trans_choice('orders.flow_statuses', $order->flow_status) }}</p>
      </div>
-
   </div>
+  @include('orders.paid1')

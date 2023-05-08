@@ -1,32 +1,191 @@
-<!DOCTYPE html>
-<html>
-<head></head>
-<title></title>
-  <meta charset="UTF-8" ,="" name="viewport" content="width=device-width, initial-scale=1">
-  <!--====== Required meta tags ======-->
-  <meta charset="utf-8" />
-  <meta http-equiv="x-ua-compatible" content="ie=edge" />
-  <meta name="description" content="" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 <style>
-  body {
-      background-color : burlywood;
+  div.paid {
+      background-color : yellow;
+      color            : blue;
   }
-  td.content {
-      width            : 100%;
+  button.submit2 {
+      background-color : #4CAF50; /* Green */
+      border           : none;
+      color            : white;
+      //padding          : 15px 32px;
+      //text-align       : center;
+      //text-decoration  : none;
+      display          : inline-block;
+      font-size        : 16px;
+      margin-left      : 10px;
+  }
+  p.input {
+      margin-left      : 20px;
   }
 </style>
+<div class="block">
+  <h2>支付訂金新台幣3500元</h2>
+  <p class="input"><input type="radio" id="method" name="method" value="24payment" class="form-control">{{ __('orders.24payment') }}</p>
+  <p class="input"><input type="radio" id="method" name="method" value="atm" class="form-control">{{ __('orders.atm') }}</p>
+  <p class="input"><input type="radio" id="method" name="method" value="creditcard" class="form-control">{{ __('orders.creditcard') }}</p>
+  <p class="input"><input type="radio" id="method" name="method" value="webatm" class="form-control">{{ __('orders.webatm') }}</p>
+</div>
 
-<body>
-<table style="border-collapse: collapse; width: 100%;">
-  <tbody>
-    <tr>
-      <td class="content">
-        @include('orders.paid1form')
-      </td>
-    </tr>
-  </tbody>
-</table>
-</body>
-</html>
-
+<script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
+<script src="https://sales.mdo.tw/js/jquery-validation/jquery.validate.min.js"></script>
+<script>
+    $(document).ready(function(){
+        $('input:radio[name="method"]').change(
+        function () {
+            if ($(this).is(':checked') && $(this).val() == '24payment') {
+                $('#suntech_24payment').show();
+                $('#suntech_atm').hide();
+                $('#suntech_creditcard').hide();
+                $('#suntech_webatm').hide();
+            } else if ($(this).is(':checked') && $(this).val() == 'atm') {
+                $('#suntech_24payment').hide();
+                $('#suntech_atm').show();
+                $('#suntech_creditcard').hide();
+                $('#suntech_webatm').hide();
+            } else if ($(this).is(':checked') && $(this).val() == 'creditcard') {
+                $('#suntech_24payment').hide();
+                $('#suntech_atm').hide();
+                $('#suntech_creditcard').show();
+                $('#suntech_webatm').hide();
+            } else if ($(this).is(':checked') && $(this).val() == 'webatm') {
+                $('#suntech_24payment').hide();
+                $('#suntech_atm').hide();
+                $('#suntech_creditcard').hide();
+                $('#suntech_webatm').show();
+            } else {
+                //Other Things
+            }
+        });
+        $("#form1").submit(function (e) {
+            e.preventDefault();
+            alert('url='+ $('#form1').prop('action'));
+        });
+        $("#form2").submit(function (e) {
+            e.preventDefault();
+            alert('url='+ $('#form2').prop('action'));
+        });
+        $("#form3").submit(function (e) {
+            e.preventDefault();
+            alert('url='+ $('#form3').prop('action'));
+        });
+        $("#form4").submit(function (e) {
+            e.preventDefault();
+            alert('url='+ $('#form4').prop('action'));
+        });
+    });
+</script>
+<div id="suntech">
+    <div id="suntech_24payment" class="block paid" hidden><h2><b>{{ __('orders.24payment') }}</b></h2>
+         <form id="form1" name="form1" action="{{ $pInfo->paymentURL }}" method="POST">
+            <input type="hidden" name="web" value="{{ $pInfo->web }}">
+            <input type="hidden" name="MN" value="{{ $pInfo->MN }}">
+            <input type="hidden" name="OrderInfo" value="{{ $pInfo->OrderInfo }}">
+            <input type="hidden" name="Td" value="{{ $pInfo->Td }}">
+            <input type="hidden" name="sna" value="{{ $pInfo->sna }}">
+            <input type="hidden" name="sdt" value="{{ $pInfo->sdt }}">
+            <input type="hidden" name="email" value="{{ $pInfo->email }}">
+            <input type="hidden" name="note1" value="{{ $pInfo->note1 }}">
+            <input type="hidden" name="note2" value="{{ $pInfo->note2 }}">
+            <input type="hidden" name="DueDate" value="{{ $pInfo->DueDate }}">
+            <input type="hidden" name="UserNo" value="{{ $pInfo->UserNo }}">
+            <input type="hidden" name="BillDate" value="{{ $pInfo->BillDate }}">
+            <input type="hidden" name="ProductName1" value="{{ $pInfo->ProductName1 }}">
+            <input type="hidden" name="ProductPrice1" value="{{ $pInfo->ProductPrice1 }}">
+            <input type="hidden" name="ProductQuantity1" value="{{ $pInfo->ProductQuantity1 }}">
+            <input type="hidden" name="AgencyType" value="1"/>
+            <input type="hidden" name="AgencyBank" value="{{ $pInfo->AgencyBank }}"/>
+            <input type="hidden" name="CargoFlag" value="{{ $pInfo->CargoFlag }}">
+            <input type="hidden" name="StoreID" value="{{ $pInfo->StoreID }}">
+            <input type="hidden" name="StoreName" value="{{ $pInfo->StoreName }}">
+            <input type="hidden" name="BuyerCid" value="{{ $pInfo->BuyerCid }}">
+            <input type="hidden" name="DonationCode" value="{{ $pInfo->DonationCode }}">
+            <input type="hidden" name="Carrier_ID" value="{{ $pInfo->Carrier_ID }}">
+            <input type="hidden" name="EDI" value="{{ $pInfo->EDI }}">
+            <input type="hidden" name="ChkValue" value="{{ $pInfo->ChkValue }}">
+            <button class="submit2" type="submit" name="send">{{ __('orders.paid1') }}</button>
+        </form>
+    </div>
+    <div id="suntech_atm" class="block paid" hidden><h2><b>{{ __('orders.atm') }}</b></h2>
+         <form id="form2" name="form2" action="{{ $pInfo->paymentURL }}" method="POST">
+            <input type="hidden" name="web" value="{{ $pInfo->web }}">
+            <input type="hidden" name="MN" value="{{ $pInfo->MN }}">
+            <input type="hidden" name="OrderInfo" value="{{ $pInfo->OrderInfo }}">
+            <input type="hidden" name="Td" value="{{ $pInfo->Td }}">
+            <input type="hidden" name="sna" value="{{ $pInfo->sna }}">
+            <input type="hidden" name="sdt" value="{{ $pInfo->sdt }}">
+            <input type="hidden" name="email" value="{{ $pInfo->email }}">
+            <input type="hidden" name="note1" value="{{ $pInfo->note1 }}">
+            <input type="hidden" name="note2" value="{{ $pInfo->note2 }}">
+            <input type="hidden" name="DueDate" value="{{ $pInfo->DueDate }}">
+            <input type="hidden" name="UserNo" value="{{ $pInfo->UserNo }}">
+            <input type="hidden" name="BillDate" value="{{ $pInfo->BillDate }}">
+            <input type="hidden" name="ProductName1" value="{{ $pInfo->ProductName1 }}">
+            <input type="hidden" name="ProductPrice1" value="{{ $pInfo->ProductPrice1 }}">
+            <input type="hidden" name="ProductQuantity1" value="{{ $pInfo->ProductQuantity1 }}">
+            <input type="hidden" name="AgencyType" value="2"/>
+            <input type="hidden" name="AgencyBank" value="{{ $pInfo->AgencyBank }}"/>
+            <input type="hidden" name="CargoFlag" value="{{ $pInfo->CargoFlag }}">
+            <input type="hidden" name="StoreID" value="{{ $pInfo->StoreID }}">
+            <input type="hidden" name="StoreName" value="{{ $pInfo->StoreName }}">
+            <input type="hidden" name="BuyerCid" value="{{ $pInfo->BuyerCid }}">
+            <input type="hidden" name="DonationCode" value="{{ $pInfo->DonationCode }}">
+            <input type="hidden" name="Carrier_ID" value="{{ $pInfo->Carrier_ID }}">
+            <input type="hidden" name="EDI" value="{{ $pInfo->EDI }}">
+            <input type="hidden" name="ChkValue" value="{{ $pInfo->ChkValue }}">
+            <button class="submit2" type="submit" name="send">{{ __('orders.paid1') }}</button>
+        </form>
+    </div>
+    <div id="suntech_creditcard" class="block paid" hidden><h2><b>{{ __('orders.creditcard') }}</b></h2>
+         <form id="form3" name="form3" action="{{ $pInfo->paymentURL }}" method="POST">
+            <input type="hidden" name="web" value="{{ $pInfo->web }}">
+            <input type="hidden" name="MN" value="{{ $pInfo->MN }}">
+            <input type="hidden" name="OrderInfo" value="{{ $pInfo->OrderInfo }}">
+            <input type="hidden" name="Td" value="{{ $pInfo->Td }}">
+            <input type="hidden" name="sna" value="{{ $pInfo->sna }}">
+            <input type="hidden" name="sdt" value="{{ $pInfo->sdt }}">
+            <input type="hidden" name="email" value="{{ $pInfo->email }}">
+            <input type="hidden" name="note1" value="{{ $pInfo->note1 }}">
+            <input type="hidden" name="note2" value="{{ $pInfo->note2 }}">
+            <input type="hidden" name="DueDate" value="{{ $pInfo->DueDate }}">
+            <input type="hidden" name="UserNo" value="{{ $pInfo->UserNo }}">
+            <input type="hidden" name="BillDate" value="{{ $pInfo->BillDate }}">
+            <input type="hidden" name="ProductName1" value="{{ $pInfo->ProductName1 }}">
+            <input type="hidden" name="ProductPrice1" value="{{ $pInfo->ProductPrice1 }}">
+            <input type="hidden" name="ProductQuantity1" value="{{ $pInfo->ProductQuantity1 }}">
+            <input type="hidden" name="Card_Type" value="{{ $pInfo->Card_Type }}">
+            <input type="hidden" name="Country_Type" value="{{ $pInfo->Country_Type }}">
+            <input type="hidden" name="Term" value="{{ $pInfo->Term }}">
+            <input type="hidden" name="CargoFlag" value="{{ $pInfo->CargoFlag }}">
+            <input type="hidden" name="StoreID" value="{{ $pInfo->StoreID }}">
+            <input type="hidden" name="StoreName" value="{{ $pInfo->StoreName }}">
+            <input type="hidden" name="BuyerCid" value="{{ $pInfo->BuyerCid }}">
+            <input type="hidden" name="DonationCode" value="{{ $pInfo->DonationCode }}">
+            <input type="hidden" name="Carrier_ID" value="{{ $pInfo->Carrier_ID }}">
+            <input type="hidden" name="EDI" value="{{ $pInfo->EDI }}">
+            <input type="hidden" name="ChkValue" value="{{ $pInfo->ChkValue }}">
+            <button class="submit2" type="submit" name="send">{{ __('orders.paid1') }}</button>
+        </form>
+    </div>
+    <div id="suntech_webatm" class="block paid" hidden><h2><b>{{ __('orders.webatm') }}</b></h2>
+         <form id="form4" name="form4" action="{{ $pInfo->paymentURL }}" method="POST">
+            <input type="hidden" name="web" value="{{ $pInfo->web }}">
+            <input type="hidden" name="MN" value="{{ $pInfo->MN }}">
+            <input type="hidden" name="OrderInfo" value="{{ $pInfo->OrderInfo }}">
+            <input type="hidden" name="Td" value="{{ $pInfo->Td }}">
+            <input type="hidden" name="sna" value="{{ $pInfo->sna }}">
+            <input type="hidden" name="sdt" value="{{ $pInfo->sdt }}">
+            <input type="hidden" name="email" value="{{ $pInfo->email }}">
+            <input type="hidden" name="note1" value="{{ $pInfo->note1 }}">
+            <input type="hidden" name="note2" value="{{ $pInfo->note2 }}">
+            <input type="hidden" name="CargoFlag" value="{{ $pInfo->CargoFlag }}">
+            <input type="hidden" name="StoreID" value="{{ $pInfo->StoreID }}">
+            <input type="hidden" name="StoreName" value="{{ $pInfo->StoreName }}">
+            <input type="hidden" name="BuyerCid" value="{{ $pInfo->BuyerCid }}">
+            <input type="hidden" name="DonationCode" value="{{ $pInfo->DonationCode }}">
+            <input type="hidden" name="Carrier_ID" value="{{ $pInfo->Carrier_ID }}">
+            <input type="hidden" name="EDI" value="{{ $pInfo->EDI }}">
+            <input type="hidden" name="ChkValue" value="{{ $pInfo->ChkValue }}">
+            <button class="submit2" type="submit" name="send">{{ __('orders.paid1') }}</button>
+        </form>
+    </div>
+</div>
