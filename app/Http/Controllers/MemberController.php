@@ -29,7 +29,18 @@ class MemberController extends Controller
     public function create(Request $request)
     {
         $data = $request->all();
-        $introducer = $data['introducer'];
+        if (!array_key_exists('introducer', $data)) {
+            return view('errorpage');
+        }
+        $introducerData = User::where('line_id', $data['introducer'])->first();
+        if (is_null($introducerData)
+            || ($introducerData != UserRole::Manager
+            && $introducerData->role != UserRole::Reseller
+            && $introducerData->role != UserRole::Distrobuter)) {
+            return view('errorpage');
+        }
+        $introducer = $introducerData->line_id;
+
         return view('members.create', compact('introducer'));
     }
 
@@ -49,7 +60,7 @@ class MemberController extends Controller
 
         $q4 = $request->q4;
         if (count($check_user) == 0) {
-            $introducer = User::where('line_id', $data['introducer'])->get()->first();
+            $introducer = User::where('line_id', $data['introducer'])->first();
             $user = [
                 'name'       => $data['name'],
                 'phone'      => $data['phone'],
@@ -71,10 +82,10 @@ class MemberController extends Controller
             $member = Member::create($member);
         } else {
             $check = $check_user->first();
-            $member = Member::where('user_id', $check->id)->get()->first();
+            $member = Member::where('user_id', $check->id)->first();
         }
 
-        $order_latest = Order::orderBy('id', 'desc')->get()->first();
+        $order_latest = Order::orderBy('id', 'desc')->first();
         if ($order_latest == null) {
             $orderlatest = 0;
         } else {

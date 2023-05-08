@@ -30,7 +30,15 @@ class ResellerController extends Controller
     public function create(Request $request)
     {
         $data = $request->all();
-        $introducer = $data['introducer'];
+        if (!array_key_exists('introducer', $data)) {
+            return view('errorpage');
+        }
+        $introducerData = User::where('line_id', $data['introducer'])->first();
+        if (is_null($introducerData) || ($introducerData->role != UserRole::Manager)) {
+            return view('errorpage');
+        }
+        $introducer = $introducerData->line_id;
+
         return view('resellers.create', compact('introducer'));
     }
 
