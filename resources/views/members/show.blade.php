@@ -78,3 +78,5 @@
        <p class="result">{{ $member->questionnaire->q5 ? __('tables.yes') : __('tables.no') }}</p>
      </div>
   </div>
+</body>
+</html>
