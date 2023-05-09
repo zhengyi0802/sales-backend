@@ -56,22 +56,6 @@
                 //Other Things
             }
         });
-        $("#form1").submit(function (e) {
-            e.preventDefault();
-            alert('url='+ $('#form1').prop('action'));
-        });
-        $("#form2").submit(function (e) {
-            e.preventDefault();
-            alert('url='+ $('#form2').prop('action'));
-        });
-        $("#form3").submit(function (e) {
-            e.preventDefault();
-            alert('url='+ $('#form3').prop('action'));
-        });
-        $("#form4").submit(function (e) {
-            e.preventDefault();
-            alert('url='+ $('#form4').prop('action'));
-        });
     });
 </script>
 <div id="suntech">

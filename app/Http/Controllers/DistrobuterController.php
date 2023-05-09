@@ -34,11 +34,13 @@ class DistrobuterController extends Controller
             return view('errorpage');
         }
         $introducerData = User::where('line_id', $data['introducer'])->first();
+
         if (is_null($introducerData)
             || ($introducerData->role != UserRole::Manager
             && $introducerData->role != UserRole::Reseller)) {
             return view('errorpage');
         }
+
         $introducer = $introducerData->line_id;
 
         return view('distrobuters.create', compact('introducer'));

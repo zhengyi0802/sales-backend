@@ -43,11 +43,11 @@
      <img src="picture-8.jpg" style="width: 90%" usemap="#image-map" id="map">
   </div>
   <div class="row">
-     <span class="advertising"><a href="advertising"><img src="advertising.gif" style="width: 20%;"></a>
-     <span class="order"><a href="members/create?introducer={{ $introducer ?? 'manager' }}"><img src="order.gif" style="width: 20%;"></a>
+     <span class="advertising"><a href="advertising"><img src="button1.gif" style="width: 20%;"></a>
+     <span class="order"><a href="members/create?introducer={{ $introducer ?? 'manager' }}"><img src="button2.gif" style="width: 20%;"></a>
      <span class="share">
        <a href="javascript:void(window.open('https://lineit.line.me/share/ui?url='.concat(encodeURIComponent(location.href)) ))">
-         <img src="share.gif" style="width: 10%;">
+         <img src="button3.gif" style="width: 20%;">
        </a>
   </div>
   <div class="bottom">

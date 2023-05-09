@@ -42,3 +42,8 @@ Route::get('/orders', [App\Http\Controllers\OrderController::class, 'index'])
 
 Route::get('/orders/{order}', [App\Http\Controllers\OrderController::class, 'show'])
      ->name('orders.show');
+
+Route::post('/suntechpayment/receive', [App\Http\Controllers\SunTechController::class, 'receive'])
+     ->name('suntechpayment.receive');
+
+

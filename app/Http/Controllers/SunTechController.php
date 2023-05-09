@@ -45,6 +45,7 @@ class SunTechController extends Controller
              'store_msg'           => urldecode($this->getPostData('StoreMsg', $data)),
              'chk_value'           => $this->getPostData('ChkValue', $data),
         ]);
+        $str = StReceive::create($st);
 
     }
 

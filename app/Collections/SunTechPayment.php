@@ -53,6 +53,9 @@ class SunTechPayment
     private $EDI_Type;
 
     public function __construct(Order $order, $amount, $pflag = 1) {
+        $this->merchantID = env('MERCHANTID');
+        $this->transPassword = env('TRANSPASSWORD');
+        $this->isProduction = env('ISPRODUCTION');
         $this->web = $this->merchantID;
         $this->MN  = $amount;
         $this->OrderInfo = ($order->model == 1) ? '75吋大電視36期月繳999元專案' : '65吋大電視36期月繳799元專案';
