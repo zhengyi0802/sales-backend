@@ -10,12 +10,13 @@ class StReceive extends Model
     use HasFactory;
     protected $fillable = [
         'buysafeno',
+        'name',
         'userno',
         'td',
         'mn',
         'note1',
         'note2',
-        'sendtype',
+        'send_type',
         'barcode_a',
         'barcode_b',
         'barcode_c',
@@ -30,8 +31,11 @@ class StReceive extends Model
         'err_code',
         'err_msg',
         'card_type',
+        'invoice_id',
+        'cargo_id',
+        'store_id',
         'store_type',
-        'store_message',
+        'store_msg',
         'chk_value',
         'confirm',
     ];
