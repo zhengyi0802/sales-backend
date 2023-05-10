@@ -29,8 +29,5 @@
   </tbody>
 </table>
 </body>
-<!--
-<script src="https://sales.mdo.tw/js/jquery-validation/jquery.validate.min.js"></script>
--->
 </html>
 

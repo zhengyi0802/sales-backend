@@ -59,6 +59,16 @@ class DistrobuterController extends Controller
                           ->orWhere('phone', $data['phone'])
                           ->first();
 
+        if (!is_null($check_user)) {
+            if ($check_user->phone == $data['phone']) {
+                $error_code = 1;
+            }
+            if ($check_user->line_id == $data['line_id']) {
+                $error_code = 2;
+            }
+            return view('distrobuters.failure', compact('error_code'));
+        }
+
         if ($data['introducer'] == null) {
             $data['introducer'] = 'manager';
         }
@@ -85,6 +95,16 @@ class DistrobuterController extends Controller
         } else {
             $check_user->update($user);
             $user = $check_user;
+        }
+        if (is_null($user)) {
+            $error_code = 4;
+            return view('resellers.failure', compact('error_code'));
+        }
+
+        $member = Member::where('pid', $data['pid'])->first();
+        if (!is_null($member)) {
+            $error_code = 3;
+            return view('distrobuters.failure', compact('error_code'));
         }
 
         $member = [

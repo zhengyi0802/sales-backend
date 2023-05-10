@@ -93,7 +93,7 @@ class SunTechPayment
             'EDI_Type'        => $this->EDI_Type
         );
         $this->EDI = $this->encrypt(json_encode($EDI_array), $this->transPassword); //加密
-        $this->ChkValue = $this->getChkValue($this->web . $this->transPassword . $this->MN); //交易檢查碼（SHA1雜湊值並轉成大寫）
+        $this->ChkValue = $this->getChkValue($this->web.$this->transPassword.$this->MN); //交易檢查碼（SHA1雜湊值並轉成大寫）
         $this->paymentURL = ($this->isProduction) ? 'https://www.esafe.com.tw/Service/Etopm.aspx' : 'https://test.esafe.com.tw/Service/Etopm.aspx'; //傳送網址
 
     }
