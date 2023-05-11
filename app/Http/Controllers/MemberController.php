@@ -82,7 +82,12 @@ class MemberController extends Controller
             $member = Member::create($member);
         } else {
             $check = $check_user->first();
-            $member = Member::where('user_id', $check->id)->first();
+            if ($check->role == UserRole::Manager) {
+                $member = Manager::where('user_id', $check->id)->first();
+                $is_manager = true;
+            } else {
+                $member = Member::where('user_id', $check->id)->first();
+            }
         }
 
         $order_latest = Order::orderBy('id', 'desc')->first();
@@ -102,6 +107,7 @@ class MemberController extends Controller
         $order = [
             'id'             => $id,
             'member_id'      => $member->id,
+            'is_manager'     => $is_manager,
             'phone'          => $data['phone'],
             'address'        => $data['address'],
             'model'          => $data['model'],
