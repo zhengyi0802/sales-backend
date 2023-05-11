@@ -77,6 +77,11 @@
        <p class="title"><strong>{{ __('members.question_5') }} :</strong></p>
        <p class="result">{{ $member->questionnaire->q5 ? __('tables.yes') : __('tables.no') }}</p>
      </div>
+     <div class="block">
+       <a href="javascript:void(window.open('https://lin.ee/on0rOe1'.concat(encodeURIComponent(location.href)) ))">
+         <img src="../button4.jpg">
+       </a>
+     </div>
   </div>
 </body>
 </html>

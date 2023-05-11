@@ -49,6 +49,7 @@
        <a href="javascript:void(window.open('https://lineit.line.me/share/ui?url='.concat(encodeURIComponent(location.href)) ))">
          <img src="button3.gif" style="width: 20%;">
        </a>
+     </span>
   </div>
   <div class="bottom">
      續看網路有線電視+追劇<br>
