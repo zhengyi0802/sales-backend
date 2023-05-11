@@ -35,9 +35,6 @@
                 <span class="title"><strong>{{ __('orders.line_id') }} :</span>
                 <span class="input"><input type="text" name="line_id" class="form-control"></span>
                 <span ><button class="submit" type="submit">{{ __('tables.submit') }}</button></span>
-                <a href="https://lin.ee/on0rOe1">
-                  <img src="../button4.jpg" width="10%">
-                </a>
             </div>
     </div>
 </form>
