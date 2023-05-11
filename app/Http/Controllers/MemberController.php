@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Uploads\FileUpload;
 use App\Models\User;
 use App\Models\Member;
+use App\Models\Manager;
 use App\Models\Questionnaire;
 use App\Models\Order;
 use App\Enums\UserRole;
