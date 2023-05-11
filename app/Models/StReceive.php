@@ -38,6 +38,7 @@ class StReceive extends Model
         'store_msg',
         'chk_value',
         'confirm',
+        'status',
     ];
 
     public function order() {

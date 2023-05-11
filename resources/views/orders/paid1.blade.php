@@ -61,7 +61,7 @@
 <div id="suntech">
     <div id="suntech_24payment" class="block paid" hidden><h2><b>{{ __('orders.24payment') }}</b></h2>
          <form id="form1" name="form1" action="{{ $pInfo->paymentURL }}" method="POST">
-            <input type="hidden" name="web" value="{{ $pInfo->web }}">
+            <input type="hidden" name="web" value="{{ $pInfo->web[0] }}">
             <input type="hidden" name="MN" value="{{ $pInfo->MN }}">
             <input type="hidden" name="OrderInfo" value="{{ $pInfo->OrderInfo }}">
             <input type="hidden" name="Td" value="{{ $pInfo->Td }}">
@@ -85,13 +85,13 @@
             <input type="hidden" name="DonationCode" value="{{ $pInfo->DonationCode }}">
             <input type="hidden" name="Carrier_ID" value="{{ $pInfo->Carrier_ID }}">
             <input type="hidden" name="EDI" value="{{ $pInfo->EDI }}">
-            <input type="hidden" name="ChkValue" value="{{ $pInfo->ChkValue }}">
+            <input type="hidden" name="ChkValue" value="{{ $pInfo->ChkValue[0] }}">
             <button class="submit2" type="submit" name="send">{{ __('orders.paid1') }}</button>
         </form>
     </div>
     <div id="suntech_atm" class="block paid" hidden><h2><b>{{ __('orders.atm') }}</b></h2>
          <form id="form2" name="form2" action="{{ $pInfo->paymentURL }}" method="POST">
-            <input type="hidden" name="web" value="{{ $pInfo->web }}">
+            <input type="hidden" name="web" value="{{ $pInfo->web[1] }}">
             <input type="hidden" name="MN" value="{{ $pInfo->MN }}">
             <input type="hidden" name="OrderInfo" value="{{ $pInfo->OrderInfo }}">
             <input type="hidden" name="Td" value="{{ $pInfo->Td }}">
@@ -115,13 +115,13 @@
             <input type="hidden" name="DonationCode" value="{{ $pInfo->DonationCode }}">
             <input type="hidden" name="Carrier_ID" value="{{ $pInfo->Carrier_ID }}">
             <input type="hidden" name="EDI" value="{{ $pInfo->EDI }}">
-            <input type="hidden" name="ChkValue" value="{{ $pInfo->ChkValue }}">
+            <input type="hidden" name="ChkValue" value="{{ $pInfo->ChkValue[1] }}">
             <button class="submit2" type="submit" name="send">{{ __('orders.paid1') }}</button>
         </form>
     </div>
     <div id="suntech_creditcard" class="block paid" hidden><h2><b>{{ __('orders.creditcard') }}</b></h2>
          <form id="form3" name="form3" action="{{ $pInfo->paymentURL }}" method="POST">
-            <input type="hidden" name="web" value="{{ $pInfo->web }}">
+            <input type="hidden" name="web" value="{{ $pInfo->web[2] }}">
             <input type="hidden" name="MN" value="{{ $pInfo->MN }}">
             <input type="hidden" name="OrderInfo" value="{{ $pInfo->OrderInfo }}">
             <input type="hidden" name="Td" value="{{ $pInfo->Td }}">
@@ -146,13 +146,13 @@
             <input type="hidden" name="DonationCode" value="{{ $pInfo->DonationCode }}">
             <input type="hidden" name="Carrier_ID" value="{{ $pInfo->Carrier_ID }}">
             <input type="hidden" name="EDI" value="{{ $pInfo->EDI }}">
-            <input type="hidden" name="ChkValue" value="{{ $pInfo->ChkValue }}">
+            <input type="hidden" name="ChkValue" value="{{ $pInfo->ChkValue[2] }}">
             <button class="submit2" type="submit" name="send">{{ __('orders.paid1') }}</button>
         </form>
     </div>
     <div id="suntech_webatm" class="block paid" hidden><h2><b>{{ __('orders.webatm') }}</b></h2>
          <form id="form4" name="form4" action="{{ $pInfo->paymentURL }}" method="POST">
-            <input type="hidden" name="web" value="{{ $pInfo->web }}">
+            <input type="hidden" name="web" value="{{ $pInfo->web[1] }}">
             <input type="hidden" name="MN" value="{{ $pInfo->MN }}">
             <input type="hidden" name="OrderInfo" value="{{ $pInfo->OrderInfo }}">
             <input type="hidden" name="Td" value="{{ $pInfo->Td }}">
@@ -168,7 +168,7 @@
             <input type="hidden" name="DonationCode" value="{{ $pInfo->DonationCode }}">
             <input type="hidden" name="Carrier_ID" value="{{ $pInfo->Carrier_ID }}">
             <input type="hidden" name="EDI" value="{{ $pInfo->EDI }}">
-            <input type="hidden" name="ChkValue" value="{{ $pInfo->ChkValue }}">
+            <input type="hidden" name="ChkValue" value="{{ $pInfo->ChkValue[1] }}">
             <button class="submit2" type="submit" name="send">{{ __('orders.paid1') }}</button>
         </form>
     </div>

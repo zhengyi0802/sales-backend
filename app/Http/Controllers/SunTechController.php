@@ -13,6 +13,8 @@ class SunTechController extends Controller
     {
         $date = $request->all();
 
+        var_dump($data);
+
         $st = array([
              'buysafeno'           => $this->getPostData('buysafeno', $data),
              'user_no'             => $this->getPostData('UserNo', $data),
@@ -27,7 +29,7 @@ class SunTechController extends Controller
              'barcode_b'           => $this->getPostData('BarcodeB', $data),
              'barcode_c'           => $this->getPostData('BarcodeC', $data),
              'post_barcode_a'      => $this->getPostData('PostBarcodeA', $data),
-             'post_barcode_b'      => $this-<getPostData('PostBarcodeB', $data),
+             'post_barcode_b'      => $this->getPostData('PostBarcodeB', $data),
              'post_barcode_c'      => $this->getPostData('PostBarcodeC', $data),
              'entity_atm'          => $this->getPostData('EntityATM', $data),
              'bank_code'           => $this->getPostData('BankCode', $data),
@@ -44,9 +46,10 @@ class SunTechController extends Controller
              'store_type'          => $this->getPostData('StoreType', $data),
              'store_msg'           => urldecode($this->getPostData('StoreMsg', $data)),
              'chk_value'           => $this->getPostData('ChkValue', $data),
+             'status'              => $this->getPostData('status', $data),
         ]);
-        $str = StReceive::create($st);
 
+        $str = StReceive::create($st);
     }
 
     function getPostData($key, $data)

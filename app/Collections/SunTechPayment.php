@@ -9,7 +9,7 @@ use App\Models\User;
 class SunTechPayment
 {
 
-    public $web;
+    public $web=array(4);
     public $MN;
     public $OrderInfo;
     public $Td;
@@ -33,7 +33,7 @@ class SunTechPayment
     public $DonationCode;
     public $Carrier_ID;
     public $EDI;
-    public $ChkValue;
+    public $ChkValue=array(4);
 
     // Credit Card/Union Pay
     public $Card_Type;
@@ -43,7 +43,7 @@ class SunTechPayment
     public $isProduction;
     public $paymentURL;
 
-    private $merchantID;
+    private $merchantID=array(4);
     private $transPassword;
     private $bankID;
     private $EDI_Name;
@@ -53,10 +53,16 @@ class SunTechPayment
     private $EDI_Type;
 
     public function __construct(Order $order, $amount, $pflag = 1) {
-        $this->merchantID = env('MERCHANTID');
+        $this->merchantID[0] = env('MERCHANTID_24PAYMENT');
+        $this->merchantID[1] = env('MERCHANTID_ATM');
+        $this->merchantID[2] = env('MERCHANTID_CREDITCARD');
+        $this->merchantID[3] = env('MERCHANTID_PAYCODE');
         $this->transPassword = env('TRANSPASSWORD');
         $this->isProduction = env('ISPRODUCTION');
-        $this->web = $this->merchantID;
+        $this->web[0] = $this->merchantID[0];
+        $this->web[1] = $this->merchantID[1];
+        $this->web[2] = $this->merchantID[2];
+        $this->web[3] = $this->merchantID[3];
         $this->MN  = $amount;
         $this->OrderInfo = ($order->model == 1) ? '75吋大電視36期月繳999元專案' : '65吋大電視36期月繳799元專案';
         $this->Td = $order->id;
@@ -93,7 +99,10 @@ class SunTechPayment
             'EDI_Type'        => $this->EDI_Type
         );
         $this->EDI = $this->encrypt(json_encode($EDI_array), $this->transPassword); //加密
-        $this->ChkValue = $this->getChkValue($this->web.$this->transPassword.$this->MN); //交易檢查碼（SHA1雜湊值並轉成大寫）
+        $this->ChkValue[0] = $this->getChkValue($this->web[0].$this->transPassword.$this->MN); //交易檢查碼（SHA1雜湊值並轉成大寫）
+        $this->ChkValue[1] = $this->getChkValue($this->web[1].$this->transPassword.$this->MN); //交易檢查碼（SHA1雜湊值並轉成大寫）
+        $this->ChkValue[2] = $this->getChkValue($this->web[2].$this->transPassword.$this->MN); //交易檢查碼（SHA1雜湊值並轉成大寫）
+        $this->ChkValue[3] = $this->getChkValue($this->web[3].$this->transPassword.$this->MN); //交易檢查碼（SHA1雜湊值並轉成大寫）
         $this->paymentURL = ($this->isProduction) ? 'https://www.esafe.com.tw/Service/Etopm.aspx' : 'https://test.esafe.com.tw/Service/Etopm.aspx'; //傳送網址
 
     }
