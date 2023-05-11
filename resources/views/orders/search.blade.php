@@ -17,11 +17,11 @@
       background-color : #4CAF50; /* Green */
       border           : none;
       color            : white;
-      padding          : 15px 32px;
+      padding          : 5px 5px;
       text-align       : center;
       text-decoration  : none;
       display          : inline-block;
-      font-size        : 16px;
+      font-size        : 14px;
   }
   span.must {
       color      : red;
@@ -32,10 +32,13 @@
      @csrf
      <div class="row">
             <div class="block">
-                <p class="title"><strong>{{ __('orders.line_id') }} :</p>
-                <p class="input"><input type="text" name="line_id" class="form-control"></p>
+                <span class="title"><strong>{{ __('orders.line_id') }} :</span>
+                <span class="input"><input type="text" name="line_id" class="form-control"></span>
+                <span ><button class="submit" type="submit">{{ __('tables.submit') }}</button></span>
+                <a href="https://lin.ee/on0rOe1">
+                  <img src="../button4.jpg" width="10%">
+                </a>
             </div>
-            <p align="center"><button class="submit" type="submit">{{ __('tables.submit') }}</button></p>
     </div>
 </form>
 
