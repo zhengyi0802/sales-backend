@@ -8,10 +8,12 @@ use Illuminate\Database\Eloquent\Model;
 class StReceive extends Model
 {
     use HasFactory;
+
     protected $fillable = [
+        'web',
         'buysafeno',
         'name',
-        'userno',
+        'user_no',
         'td',
         'mn',
         'note1',
@@ -26,6 +28,8 @@ class StReceive extends Model
         'entity_atm',
         'bank_code',
         'bank_name',
+        'pay_code',
+        'pay_type',
         'approve_code',
         'card_no',
         'err_code',

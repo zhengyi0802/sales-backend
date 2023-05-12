@@ -24,6 +24,7 @@
   <p class="input"><input type="radio" id="method" name="method" value="atm" class="form-control">{{ __('orders.atm') }}</p>
   <p class="input"><input type="radio" id="method" name="method" value="creditcard" class="form-control">{{ __('orders.creditcard') }}</p>
   <p class="input"><input type="radio" id="method" name="method" value="webatm" class="form-control">{{ __('orders.webatm') }}</p>
+  <p class="input"><input type="radio" id="method" name="method" value="paycode" class="form-control">{{ __('orders.paycode') }}</p>
 </div>
 
 <script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
@@ -37,21 +38,31 @@
                 $('#suntech_atm').hide();
                 $('#suntech_creditcard').hide();
                 $('#suntech_webatm').hide();
+                $('#suntech_paycode').hide();
             } else if ($(this).is(':checked') && $(this).val() == 'atm') {
                 $('#suntech_24payment').hide();
                 $('#suntech_atm').show();
                 $('#suntech_creditcard').hide();
                 $('#suntech_webatm').hide();
+                $('#suntech_paycode').hide();
             } else if ($(this).is(':checked') && $(this).val() == 'creditcard') {
                 $('#suntech_24payment').hide();
                 $('#suntech_atm').hide();
                 $('#suntech_creditcard').show();
                 $('#suntech_webatm').hide();
+                $('#suntech_paycode').hide();
             } else if ($(this).is(':checked') && $(this).val() == 'webatm') {
                 $('#suntech_24payment').hide();
                 $('#suntech_atm').hide();
                 $('#suntech_creditcard').hide();
                 $('#suntech_webatm').show();
+                $('#suntech_paycode').hide();
+            } else if ($(this).is(':checked') && $(this).val() == 'paycode') {
+                $('#suntech_24payment').hide();
+                $('#suntech_atm').hide();
+                $('#suntech_creditcard').hide();
+                $('#suntech_webatm').hide();
+                $('#suntech_paycode').show();
             } else {
                 //Other Things
             }
@@ -172,4 +183,30 @@
             <button class="submit2" type="submit" name="send">{{ __('orders.paid1') }}</button>
         </form>
     </div>
+    <div id="suntech_paycode" class="block paid" hidden><h2><b>{{ __('orders.paycode') }}</b></h2>
+         <form id="form5" name="form5" action="{{ $pInfo->paymentURL }}" method="POST">
+            <input type="hidden" name="web" value="{{ $pInfo->web[3] }}">
+            <input type="hidden" name="MN" value="{{ $pInfo->MN }}">
+            <input type="hidden" name="OrderInfo" value="{{ $pInfo->OrderInfo }}">
+            <input type="hidden" name="Td" value="{{ $pInfo->Td }}">
+            <input type="hidden" name="sna" value="{{ $pInfo->sna }}">
+            <input type="hidden" name="sdt" value="{{ $pInfo->sdt }}">
+            <input type="hidden" name="email" value="{{ $pInfo->email }}">
+            <input type="hidden" name="note1" value="{{ $pInfo->note1 }}">
+            <input type="hidden" name="note2" value="{{ $pInfo->note2 }}">
+            <input type="hidden" name="DueDate" value="{{ $pInfo->DueDate }}">
+            <input type="hidden" name="UserNo" value="{{ $pInfo->UserNo }}">
+            <input type="hidden" name="BillDate" value="{{ $pInfo->BillDate }}">
+            <input type="hidden" name="CargoFlag" value="{{ $pInfo->CargoFlag }}">
+            <input type="hidden" name="StoreID" value="{{ $pInfo->StoreID }}">
+            <input type="hidden" name="StoreName" value="{{ $pInfo->StoreName }}">
+            <input type="hidden" name="BuyerCid" value="{{ $pInfo->BuyerCid }}">
+            <input type="hidden" name="DonationCode" value="{{ $pInfo->DonationCode }}">
+            <input type="hidden" name="Carrier_ID" value="{{ $pInfo->Carrier_ID }}">
+            <input type="hidden" name="EDI" value="{{ $pInfo->EDI }}">
+            <input type="hidden" name="ChkValue" value="{{ $pInfo->ChkValue[3] }}">
+            <button class="submit2" type="submit" name="send">{{ __('orders.paid1') }}</button>
+        </form>
+    </div>
+
 </div>

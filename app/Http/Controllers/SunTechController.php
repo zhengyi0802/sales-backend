@@ -11,11 +11,10 @@ class SunTechController extends Controller
     //
     public function receive(Request $request)
     {
-        $date = $request->all();
+        $data = $request->all();
 
-        var_dump($data);
-
-        $st = array([
+        $st = [
+             'web'                 => $this->getPostData('web', $data),
              'buysafeno'           => $this->getPostData('buysafeno', $data),
              'user_no'             => $this->getPostData('UserNo', $data),
              'name'                => $this->getPostData('Name', $data),
@@ -34,6 +33,8 @@ class SunTechController extends Controller
              'entity_atm'          => $this->getPostData('EntityATM', $data),
              'bank_code'           => $this->getPostData('BankCode', $data),
              'bank_name'           => $this->getPostData('BankName', $data),
+             'pay_code'            => $this->getPostData('PayCode', $data),
+             'pay_type'            => $this->getPostData('PayType', $data),
              'approve_code'        => $this->getPostData('ApproveCode', $data),
              'card_no'             => $this->getPostData('Card_NO', $data),
              'err_no'              => $this->getPostData('errcode', $data),
@@ -47,9 +48,11 @@ class SunTechController extends Controller
              'store_msg'           => urldecode($this->getPostData('StoreMsg', $data)),
              'chk_value'           => $this->getPostData('ChkValue', $data),
              'status'              => $this->getPostData('status', $data),
-        ]);
+        ];
 
         $str = StReceive::create($st);
+
+        return view('suntechpayment.show', compact('str'));
     }
 
     function getPostData($key, $data)
