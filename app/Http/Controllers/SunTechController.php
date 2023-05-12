@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Collections\SunTechCollection;
 use App\Models\StReceive;
+use App\Models\StPaid;
 
 class SunTechController extends Controller
 {
@@ -53,6 +54,12 @@ class SunTechController extends Controller
         $str = StReceive::create($st);
 
         return view('suntechpayment.show', compact('str'));
+    }
+
+    public function paid(Request $request)
+    {
+
+
     }
 
     function getPostData($key, $data)

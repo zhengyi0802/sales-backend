@@ -46,4 +46,6 @@ Route::get('/orders/{order}', [App\Http\Controllers\OrderController::class, 'sho
 Route::match(array('get','post'),'/suntechpayment/receive', [App\Http\Controllers\SunTechController::class, 'receive'])
      ->name('suntechpayment.receive');
 
+Route::match(array('get','post'),'/suntechpayment/paid', [App\Http\Controllers\SunTechController::class, 'paid'])
+     ->name('suntechpayment.paid');
 

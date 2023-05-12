@@ -43,6 +43,7 @@
        <p class="title"><strong>{{ __('suntechpayment.note1') }} :</strong></p>
        <p class="result">{{ $str->note1 }}</p>
      </div>
+     @if ($str->web == env('MERCHANTID_24PAYMENT'))
      <div class="block">
        <p class="title"><strong>{{ __('suntechpayment.barcode') }} :</strong></p>
        <p class="result">
@@ -58,6 +59,8 @@
        </p>
        <p class="result">{{ $str->barcode_c }}</p>
      </div>
+     @endif
+     @if ($str->web == env('MERCHANTID_ATM'))
      <div class="block">
        <p class="title"><strong>{{ __('suntechpayment.entity_atm') }} :</strong></p>
        <p class="result">{{ $str->entity_atm }}</p>
@@ -66,6 +69,15 @@
        <p class="title"><strong>{{ __('suntechpayment.bank_name') }} :</strong></p>
        <p class="result">{{ $str->bank_name }}</p>
      </div>
+     @endif
+     @if ($str->web == env('MERCHANTID_PAYCODE'))
+     <div class="block">
+       <p class="title"><strong>{{ __('suntechpayment.pay_code') }} :</strong></p>
+       <p class="result">{{ $str->pay_code }}</p>
+       <p class="title"><strong>{{ __('suntechpayment.pay_type') }} :</strong></p>
+       <p class="result">{{ $str->pay_type }}</p>
+     </div>
+     @endif
   </div>
 </body>
 </html>
