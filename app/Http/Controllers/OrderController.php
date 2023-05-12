@@ -63,6 +63,20 @@ class OrderController extends Controller
                ->with(compact('pInfo'));
     }
 
+    public function paid1(Order $order)
+    {
+        $pInfo = new SunTechPayment($order, 3500, 1);
+        return view('orders.paid1', compact('order'))
+               ->with(compact('pInfo'));
+    }
+
+    public function paid2(Order $order)
+    {
+        $pInfo = new SunTechPayment($order, 6000, 1);
+        return view('orders.paid2', compact('order'))
+               ->with(compact('pInfo'));
+    }
+
     /**
      * Show the form for editing the specified resource.
      *

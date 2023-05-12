@@ -71,7 +71,7 @@ class SunTechPayment
         $this->email = $order->member->user->email;
         $this->note1 = '3500元訂金抵電視安裝費';
         $this->note2 = '';
-        $this->DueDate = date('Ymd', strtotime("+3 days"));
+        $this->DueDate = date('Ymd', strtotime("+7 days"));
         $this->UserNo = sprintf('M23%07d', $order->member_id);
         $this->BillDate = date('Ymd');
         $this->ProductName1 = ($order->model == 1) ? '75吋大電視36期月繳999元專案' : '65吋大電視36期月繳799元專案';

@@ -43,6 +43,12 @@ Route::get('/orders', [App\Http\Controllers\OrderController::class, 'index'])
 Route::get('/orders/{order}', [App\Http\Controllers\OrderController::class, 'show'])
      ->name('orders.show');
 
+Route::get('/orders/{order}/paid1', [App\Http\Controllers\OrderController::class, 'paid1'])
+     ->name('orders.paid1');
+
+Route::get('/orders/{order}/paid2', [App\Http\Controllers\OrderController::class, 'paid2'])
+     ->name('orders.paid2');
+
 Route::match(array('get','post'),'/suntechpayment/receive', [App\Http\Controllers\SunTechController::class, 'receive'])
      ->name('suntechpayment.receive');
 

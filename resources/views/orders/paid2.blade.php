@@ -48,7 +48,7 @@
        <p class="title"><strong>{{ __('orders.flow_status') }} :</strong></p>
        <p class="result">{{ trans_choice('orders.flow_statuses', $order->flow_status) }}</p>
      </div>
-     @include('orders.paid1form')
+     @include('orders.paid2form')
   </div>
 </body>
 </html>

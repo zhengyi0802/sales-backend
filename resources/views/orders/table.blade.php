@@ -51,8 +51,8 @@
       <td class="grid">{{ trans_choice('orders.flow_statuses', $order->flow_status) }}</td>
       <td>
         <a class="btn btn-info" href="{{ route('orders.show',$order->id) }}">{{ __('tables.details') }}</a>
-        <a class="btn btn-paid1" href="{{ route('orders.show',$order->id) }}">{{ __('tables.btn_paid1') }}</a>
-        <a class="btn btn-paid2" href="{{ route('orders.show',$order->id) }}">{{ __('tables.btn_paid2') }}</a>
+        <a class="btn btn-paid1" href="{{ route('orders.paid1',$order->id) }}">{{ __('tables.btn_paid1') }}</a>
+        <a class="btn btn-paid2" href="{{ route('orders.paid2',$order->id) }}">{{ __('tables.btn_paid2') }}</a>
       </td>
     </td>
     @endforeach

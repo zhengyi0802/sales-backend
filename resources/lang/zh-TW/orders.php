@@ -35,7 +35,7 @@
         '24payment'      => '超商條碼支付',
         'atm'            => '銀行ATM轉帳',
         'paycode'        => '超商代碼支付',
-        'creditcard'     => '信用卡支付',
+        'creditcard'     => '信用卡支付(暫時不支持)',
         'sunship'        => '超商取貨付款',
         'unionpay'       => '銀聯卡支付',
         'webatm'         => '網路ATM轉帳',

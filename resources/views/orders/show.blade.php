@@ -61,4 +61,5 @@
        <p class="result">{{ trans_choice('orders.flow_statuses', $order->flow_status) }}</p>
      </div>
   </div>
-  @include('orders.paid1')
+</body>
+</html>
