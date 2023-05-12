@@ -58,7 +58,34 @@ class SunTechController extends Controller
 
     public function paid(Request $request)
     {
+        $data = $request->all();
 
+        $st = [
+             'web'                 => $this->getPostData('web', $data),
+             'buysafeno'           => $this->getPostData('buysafeno', $data),
+             'user_no'             => $this->getPostData('UserNo', $data),
+             'name'                => $this->getPostData('Name', $data),
+             'td'                  => $this->getPostData('Td', $data),
+             'mn'                  => $this->getPostData('MN', $data),
+             'name'                => urldecode($this->getPostData('Name', $data)),
+             'note1'               => urldecode($this->getPostData('note1', $data)),
+             'note2'               => urldecode($this->getPostData('note2', $data)),
+             'pay_date'            => $this->getPostData('PayDate', $data);
+             'pay_time'            => $this->getPostData('PayTime', $data);
+             'pay_type'            => $this->getPostData('PayType', $data);
+             'pay_agency'          => $this->getPostData('PayAgency', $data);
+             'pay_agency_name'     => urldecode($this->getPostData('PayAgencyName', $data)),
+             'pay_agency_tel'      => $this->getPostData('PayAgencyTel', $data);
+             'pay_agency_address'  => urldecode($this->getPostData('PayAgencyAddress', $data)),
+             'err_code'            => $this->getPostData('errcode', $data);
+             'err_msg'             => urldecode($this->getPostData('errMsg', $data));
+             'invoice_no'          => $this->getPostData('InvoiceNo', $data);
+             'cargo_no'            => $this->getPostData('CargoNo', $this);
+             'store_id'            => $this->getPostData('StoreId', $this);
+             'store_name'          => urldecode($this->getPostData('StoreName', $data));
+        ];
+
+        $str = StPaid::create($st);
 
     }
 
