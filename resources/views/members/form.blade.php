@@ -38,8 +38,7 @@
 </style>
 <form id="member-form" action="{{ route('members.store') }}" method="POST">
     @csrf
-    <input type="hidden" name="introducer" value="{{ $introducer }}">
-     <div class="row">
+    <div class="row">
             <div class="block">
                 <p class="title"><strong>{{ __('members.question_1') }} : <span class="must">{{ __('tables.must') }}</span></strong></p>
                 <p class="input"><input type="text" name="q1" class="form-control"></p>
@@ -102,7 +101,7 @@
             </div>
             <div class="block">
                 <p class="title"><strong>{{ __('members.introducer') }} : <span class="must">{{ __('tables.must') }}</span></strong></p>
-                <p class="input"><input type="text" name="introducer" class="form-control" value="{{ $introducer }}"></p>
+                <p class="input"><input type="text" name="introducer" class="form-control" value="{{ $introducer }}" disabled></p>
             </div>
             <p align="center"><button class="submit" type="submit">{{ __('tables.submit') }}</button></p>
     </div>
