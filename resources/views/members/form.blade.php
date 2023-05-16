@@ -87,7 +87,7 @@
                 <p class="input"><input type="text" name="phone" class="form-control"></p>
             </div>
             <div class="block">
-                <p class="title"><strong>{{ __('members.email') }} : <span class="must">{{ __('tables.must') }}</span></strong></p>
+                <p class="title"><strong>{{ __('members.email') }} :</strong></p>
                 <p class="input"><input type="text" name="email" class="form-control" placeholder="user@email.com"></p>
             </div>
             <div class="block">
@@ -131,10 +131,6 @@
                line_id: {
                   required: true
                },
-               email: {
-                  required: true,
-                  email: true
-               },
                address: {
                   required: true,
                   minlength: 10
@@ -158,10 +154,6 @@
                },
                line_id: {
                   required: 'Line ID必填'
-               },
-               email: {
-                  required: '電子信箱必須填寫',
-                  email: '電子信箱格式錯誤'
                },
                address: {
                   required: '地址必須填寫',

@@ -53,7 +53,7 @@
                 <p class="input"><input type="text" name="line_id" class="form-control"></p>
             </div>
             <div class="block">
-                <p class="title"><strong>{{ __('resellers.email') }} : <span class="must">{{ __('tables.must') }}</span></strong></p>
+                <p class="title"><strong>{{ __('resellers.email') }} :</strong></p>
                 <p class="input"><input type="text" name="email" class="form-control" placeholder="user@email.com"></p>
             </div>
             <div class="block">
@@ -97,10 +97,6 @@
                   required: true,
                   minlength: 8
                },
-               email: {
-                  required: true,
-                  email: true
-               },
                address: {
                   required: true,
                   minlength: 10
@@ -125,10 +121,6 @@
                password: {
                   required: '密碼必須填寫',
                   minlength: '密碼設置至少8個字元'
-               },
-               email: {
-                  required: '電子信箱必須填寫',
-                  email: '電子信箱格式錯誤'
                },
                address: {
                   required: '地址必須填寫',
