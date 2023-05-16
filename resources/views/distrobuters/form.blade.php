@@ -49,7 +49,7 @@
                 <p class="input"><input type="text" name="phone" class="form-control"></p>
             </div>
             <div class="block">
-                <p class="title"><strong>{{ __('distrobuters.line_id') }} : <span class="must">{{ __('tables.must') }}</span></strong></p>
+                <p class="title"><strong>{{ __('distrobuters.line_id') }} : <span class="must">{{ __('tables.must') }}{{ __('tables.anonly') }}</span></strong></p>
                 <p class="input"><input type="text" name="line_id" class="form-control"></p>
             </div>
             <div class="block">
