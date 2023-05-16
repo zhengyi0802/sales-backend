@@ -71,7 +71,7 @@ class MemberController extends Controller
         $is_manager = false;
         if ($data['business_id'] != null) {
             if ($data['business_id'][0] == 'B') {
-                $id = intval(substr($data['business_id'], 3));
+                $id = intval(substr($data['business_id'], 4));
                 $intro = Manager::find($id);
             } else if ($data['business_id'][0] == 'R') {
                 $id = intval(substr($data['business_id'], 1));
