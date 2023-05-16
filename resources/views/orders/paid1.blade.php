@@ -30,7 +30,7 @@
 </style>
 
 <body oncontextmenu="return false">
-  <h2>申領資料</h2>
+  <h2>申領資料預付訂金3500元</h2>
   <div class="content">
      <div class="block">
        <p class="title"><strong>{{ __('orders.id') }} :</strong></p>

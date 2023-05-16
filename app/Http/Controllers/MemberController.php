@@ -30,8 +30,9 @@ class MemberController extends Controller
     public function create(Request $request)
     {
         $data = $request->all();
-        if (!array_key_exists('introducer', $data)) {
-            return view('errorpage');
+        if (!array_key_exists('introducer', $data) || $data['introducer'] == '' ) {
+            $introducer = '';
+            return view('members.create', compact('introducer'));
         }
         $introducerData = User::where('line_id', $data['introducer'])->first();
         if (is_null($introducerData)
@@ -60,6 +61,7 @@ class MemberController extends Controller
                           ->get();
 
         $q4 = $request->q4;
+        $is_manager = false;
         if (count($check_user) == 0) {
             $introducer = User::where('line_id', $data['introducer'])->first();
             $user = [
@@ -88,6 +90,7 @@ class MemberController extends Controller
                 $is_manager = true;
             } else {
                 $member = Member::where('user_id', $check->id)->first();
+                $is_manager = false;
             }
         }
 

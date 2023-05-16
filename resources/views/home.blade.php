@@ -44,7 +44,7 @@
   </div>
   <div class="row">
      <span class="advertising"><a href="advertising"><img src="button1.gif" style="width: 20%;"></a>
-     <span class="order"><a href="members/create?introducer={{ $introducer ?? 'manager' }}"><img src="button2.gif" style="width: 20%;"></a>
+     <span class="order"><a href="members/create?introducer={{ $introducer ?? '' }}"><img src="button2.gif" style="width: 20%;"></a>
      <span class="share">
        <a href="javascript:void(window.open('https://lineit.line.me/share/ui?url='.concat(encodeURIComponent(location.href)) ))">
          <img src="button3.gif" style="width: 20%;">
