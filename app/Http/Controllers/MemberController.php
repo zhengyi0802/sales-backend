@@ -32,7 +32,8 @@ class MemberController extends Controller
         $data = $request->all();
         if (!array_key_exists('introducer', $data) || $data['introducer'] == '' ) {
             $introducer = '';
-            return view('members.create', compact('introducer'));
+            $business_id = 'B23501';
+            return view('members.create', compact('introducer'))->with(compact('business_id'));
         }
         $introducerData = User::where('line_id', $data['introducer'])->first();
         if (is_null($introducerData)
@@ -42,8 +43,14 @@ class MemberController extends Controller
             return view('errorpage');
         }
         $introducer = $introducerData->line_id;
-
-        return view('members.create', compact('introducer'));
+        if ($introducerData->role == UserRole::Manager) {
+            $business_id = sprintf('B235%02d', $user->manager->id);
+        } else if ($introducerData->role == UserRole::Reseller) {
+            $business_id = sprintf('R%05d', $user->member->id);
+        } else if ($introducerData->role == UserRole::Distrobuter) {
+            $business_id = sprintf('D%05d', $user->member->id);
+        }
+        return view('members.create', compact('introducer'))->with('business_id');
     }
 
     /**
@@ -62,6 +69,19 @@ class MemberController extends Controller
 
         $q4 = $request->q4;
         $is_manager = false;
+        if ($data['business_id'] != null) {
+            if ($data['business_id'][0] == 'B') {
+                $id = intval(substr($data['business_id'], 3));
+                $intro = Manager::find($id);
+            } else if ($data['business_id'][0] == 'R') {
+                $id = intval(substr($data['business_id'], 1));
+                $intro = Member::find($id);
+            } else if ($data['business_id'][0] == 'D') {
+                $id = intval(substr($data['business_id'], 1));
+                $intro = Member::find($id);
+            }
+            $introducer = User::find($intro->user_id);
+        }
         if (count($check_user) == 0) {
             $introducer = User::where('line_id', $data['introducer'])->first();
             $user = [
