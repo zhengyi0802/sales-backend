@@ -75,7 +75,9 @@ class MemberController extends Controller
                 'status'     => true,
             ];
             $user = User::create($user);
-
+            if (is_null($introducer)) {
+                $introducer = User::find(4);
+            }
             $member = [
                 'user_id'        => $user->id,
                 'introducer_id'  => $introducer->id,

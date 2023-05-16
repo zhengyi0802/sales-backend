@@ -102,7 +102,7 @@
             </div>
             <div class="block">
                 <p class="title"><strong>{{ __('members.introducer') }} : <span class="must">{{ __('tables.must') }}</span></strong></p>
-                <p class="input"><input type="text" name="introducer" class="form-control" style="width: 95%;" value="{{ $introducer }}"></p>
+                <p class="input"><input type="text" name="introducer" class="form-control" value="{{ $introducer }}"></p>
             </div>
             <p align="center"><button class="submit" type="submit">{{ __('tables.submit') }}</button></p>
     </div>
