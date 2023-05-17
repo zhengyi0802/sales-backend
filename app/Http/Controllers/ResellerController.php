@@ -75,6 +75,7 @@ class ResellerController extends Controller
         } else {
             $share_status = $introducer->member->share_status;
         }
+
         $user = [
                 'name'       => $data['name'],
                 'phone'      => $data['phone'],

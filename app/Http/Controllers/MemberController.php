@@ -44,13 +44,13 @@ class MemberController extends Controller
         }
         $introducer = $introducerData->line_id;
         if ($introducerData->role == UserRole::Manager) {
-            $business_id = sprintf('B235%02d', $user->manager->id);
+            $business_id = sprintf('B235%02d', $introducerData->manager->id);
         } else if ($introducerData->role == UserRole::Reseller) {
-            $business_id = sprintf('R%05d', $user->member->id);
+            $business_id = sprintf('R%05d', $introducerData->member->id);
         } else if ($introducerData->role == UserRole::Distrobuter) {
-            $business_id = sprintf('D%05d', $user->member->id);
+            $business_id = sprintf('D%05d', $introducerData->member->id);
         }
-        return view('members.create', compact('introducer'))->with('business_id');
+        return view('members.create', compact('introducer'))->with(compact('business_id'));
     }
 
     /**
@@ -64,12 +64,12 @@ class MemberController extends Controller
         $data = $request->all();
         $check_user = User::where('line_id', $data['line_id'])
                           ->orWhere('phone', $data['phone'])
-                          ->orWhere('email', $data['email'])
                           ->get();
 
         $q4 = $request->q4;
         $is_manager = false;
-        if ($data['business_id'] != null) {
+
+        if (array_key_exists('business_id', $data) && $data['business_id'] != null) {
             if ($data['business_id'][0] == 'B') {
                 $id = intval(substr($data['business_id'], 4));
                 $intro = Manager::find($id);
@@ -81,7 +81,9 @@ class MemberController extends Controller
                 $intro = Member::find($id);
             }
             $introducer = User::find($intro->user_id);
+            $data['introducer'] = $introducer->line_id;
         }
+
         if (count($check_user) == 0) {
             $introducer = User::where('line_id', $data['introducer'])->first();
             $user = [

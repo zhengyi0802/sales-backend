@@ -79,6 +79,7 @@ class DistrobuterController extends Controller
         } else {
             $share_status = $introducer->member->share_status;
         }
+
         $user = [
             'name'       => $data['name'],
             'phone'      => $data['phone'],
@@ -96,6 +97,7 @@ class DistrobuterController extends Controller
             $check_user->update($user);
             $user = $check_user;
         }
+
         if (is_null($user)) {
             $error_code = 4;
             return view('resellers.failure', compact('error_code'));

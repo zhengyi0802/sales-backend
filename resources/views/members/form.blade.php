@@ -38,6 +38,7 @@
 </style>
 <form id="member-form" action="{{ route('members.store') }}" method="POST">
     @csrf
+    <input name="introducer" value="{{ $introducer }}" hidden>
     <div class="row">
             <div class="block">
                 <p class="title"><strong>{{ __('members.question_1') }} : <span class="must">{{ __('tables.must') }}</span></strong></p>
@@ -100,8 +101,8 @@
                 <p class="input"><input type="radio" name="model" value="1" class="form-control" checked>{{ __('members.model_75') }}</p>
             </div>
             <div class="block">
-                <p class="title"><strong>{{ __('members.introducer') }} : <span class="must">{{ __('tables.must') }}</span></strong></p>
-                <p class="input"><input type="text" name="introducer" class="form-control" value="{{ $introducer }}" ></p>
+                <p class="title"><strong>{{ __('members.business_id') }} : <span class="must">{{ __('tables.must') }}</span></strong></p>
+                <p class="input"><input type="text" name="business_id" class="form-control" value="{{ $business_id }}" ></p>
             </div>
             <p align="center"><button class="submit" type="submit">{{ __('tables.submit') }}</button></p>
     </div>

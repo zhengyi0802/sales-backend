@@ -3,7 +3,8 @@
     return [
         'header'         => '客戶(會員)列表',
         'title'          => '客戶(會員)管理',
-        'introducer'     => '經辦人(業務編號)',
+        'introducer'     => '經辦人(Line ID)',
+        'business_id'    => '經辦人(業務編號)',
         'id'             => '編號',
         'phone'          => '電話',
         'line_id'        => 'Line ID',
