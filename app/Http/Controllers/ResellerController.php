@@ -55,6 +55,7 @@ class ResellerController extends Controller
         $check_user = User::where('line_id', $data['line_id'])
                           ->orWhere('phone', $data['phone'])
                           ->first();
+
         if (!is_null($check_user)) {
             if ($check_user->phone == $data['phone']) {
                 $error_code = 1;

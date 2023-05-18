@@ -19,6 +19,19 @@
   }
 </style>
 <div class="block">
+  <h2>{{ __('treaty.title') }}</h2>
+  <p class="input">{{ __('treaty.treaty1') }}</p>
+  <p class="input">{{ __('treaty.treaty2') }}</p>
+  <p class="input">{{ __('treaty.treaty3') }}</p>
+  <p class="input">{{ __('treaty.treaty3a') }}</p>
+  <p class="input">{{ __('treaty.treaty3b') }}</p>
+  <p class="input">{{ __('treaty.treaty4') }}</p>
+  <p class="input">{{ __('treaty.treaty5') }}</p>
+  <p class="input">{{ __('treaty.treaty6') }}</p>
+  <p class="input">{{ __('treaty.treaty7') }}</p>
+  <p class="input">{{ __('treaty.treaty8') }}</p>
+</div>
+<div class="block">
   <h2>支付訂金新台幣3500元</h2>
   <p class="input"><input type="radio" id="method" name="method" value="24payment" class="form-control">{{ __('orders.24payment') }}</p>
   <p class="input"><input type="radio" id="method" name="method" value="atm" class="form-control">{{ __('orders.atm') }}</p>
@@ -26,7 +39,6 @@
   <p class="input"><input type="radio" id="method" name="method" value="webatm" class="form-control"  hidden>{{ __('orders.webatm') }}</p>
   <p class="input"><input type="radio" id="method" name="method" value="paycode" class="form-control" hidden>{{ __('orders.paycode') }}</p>
 </div>
-
 <script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
 <script src="https://sales.mdo.tw/js/jquery-validation/jquery.validate.min.js"></script>
 <script>
