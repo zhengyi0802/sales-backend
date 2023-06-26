@@ -22,7 +22,7 @@
   <h2>支付押金新台幣6000元</h2>
   <p class="input"><input type="radio" id="method" name="method" value="24payment" class="form-control">{{ __('orders.24payment') }}</p>
   <p class="input"><input type="radio" id="method" name="method" value="atm" class="form-control">{{ __('orders.atm') }}</p>
-  <p class="input"><input type="radio" id="method" name="method" value="creditcard" class="form-control" hidden>{{ __('orders.creditcard') }}</p>
+  <p class="input"><input type="radio" id="method" name="method" value="creditcard" class="form-control">{{ __('orders.creditcard') }}</p>
   <p class="input"><input type="radio" id="method" name="method" value="webatm" class="form-control" hidden>{{ __('orders.webatm') }}</p>
   <p class="input"><input type="radio" id="method" name="method" value="paycode" class="form-control" hidden>{{ __('orders.paycode') }}</p>
 </div>

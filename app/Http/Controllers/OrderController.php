@@ -23,8 +23,10 @@ class OrderController extends Controller
         $orders = Order::where('id', 0)->get();
         if ($data != null && $data['line_id'] != null) {
             $user = User::where('line_id', $data['line_id'])->first();
-            $member = $user->member;
-            $orders = Order::where('member_id', $member->id)->get();
+            if ($user != null) {
+                $member = $user->member;
+                $orders = Order::where('member_id', $member->id)->get();
+            }
         }
         return view('orders.index', compact('orders'));
     }

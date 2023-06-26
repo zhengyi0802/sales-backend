@@ -50,6 +50,11 @@
          <img src="button3.gif" style="width: 20%;">
        </a>
      </span>
+     <span class="share">
+       <a href="javascript:void(window.open('https://lin.ee/9zO4ShV'))">
+         <img src="button5.gif" style="width: 20%;">
+       </a>
+     </span>
   </div>
   <div class="bottom">
      續看網路有線電視+追劇<br>
